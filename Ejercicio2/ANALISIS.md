@@ -1,27 +1,29 @@
 # Análisis - Ejercicio 2 (Países y Provincias)
 
 ## 1. Sustantivos detectados
-* **País:** Queda como Clase.
-* **Provincia:** Queda como Clase.
-* **Ciudad:** Queda como Clase.
-* **Continente:** Queda como Clase.
-* **Capital:** Queda como atributo booleano (esCapital) dentro de Ciudad, o como un rol en la asociación.
+- **País**: clase.
+- **Provincia**: clase.
+- **Ciudad**: clase.
+- **Continente**: clase.
+- **Capital**: no se modela como clase; se representa como un rol de la relación o como una referencia a una ciudad.
 
 ## 2. Verbos que conectan clases
-* tiene (País tiene Provincias, Provincia tiene Ciudades).
-* limita con (País con País, Provincia con Provincia, Provincia con País).
-* se localiza en (País en Continente).
+- **tiene**: País tiene Provincias, Provincia tiene Ciudades.
+- **limita con**: País con País, Provincia con Provincia, Provincia con País.
+- **se localiza en**: País en Continente.
 
 ## 3. Restricciones o reglas del enunciado
-* Una de las ciudades de una provincia es su capital.
-* El país también tiene una capital (que lógicamente es una ciudad).
-* Las provincias de un país limitan con provincias del mismo país y pueden limitar con otros países.
+- Una de las ciudades de una provincia es su capital.
+- El país también tiene una capital, que lógicamente es una ciudad.
+- Las provincias de un país limitan con provincias del mismo país y pueden limitar con otros países.
 
-## 4. Justificación de decisiones (Composición/Agregación y Multiplicidad)
-* **País y Provincia (Composición):** Una provincia no tiene existencia independiente ni sentido fuera del país al que pertenece. Si se elimina el sistema del país, sus provincias desaparecen. Multiplicidad `1` a `1..*` (un país se compone de una o más provincias).
-* **Provincia y Ciudad (Composición):** Mismo criterio. La ciudad pertenece a esa provincia de forma exclusiva. Multiplicidad `1` a `1..*`.
-* **Continente y País (Asociación Simple):** Es una relación de localización ("se localiza en"). No hay una dependencia de ciclo de vida estricta donde el continente administre la creación/destrucción de los países. Multiplicidad `1` a `1..*`.
-* **Asociaciones de "Límite" (Asociación Reflexiva y Simple):** Un país limita con muchos países (`*` a `*`), una provincia limita con muchas provincias (`*` a `*`), y una provincia puede limitar con múltiples países (`*` a `*`).
+## 4. Justificación de decisiones (composición, asociación y multiplicidad)
+- **País y Provincia (composición):** una provincia no tiene sentido fuera del país al que pertenece. Si se elimina el país, sus provincias también dejan de existir en el modelo.
+- **Provincia y Ciudad (composición):** mismo criterio. La ciudad pertenece de forma exclusiva a una provincia.
+- **Continente y País (asociación simple):** es una relación de localización; no hay una dependencia fuerte de ciclo de vida.
+- **Relaciones de límite (asociación reflexiva y simple):** un país limita con muchos países (`*` a `*`) y una provincia limita con muchas provincias (`*` a `*`).
 
 ## 5. Dudas abiertas o problemas encontrados
-* El enunciado dice "un país tiene una capital" y "las provincias tienen ciudades y una de ellas es su capital". Se optó por modelar una asociación simple llamada "tiene capital" desde País y Provincia hacia la clase Ciudad para evitar redundancias de atributos.
+- El enunciado dice que un país tiene una capital y que cada provincia también tiene una capital. Se modela como una referencia a una ciudad, no como una clase aparte.
+- Las relaciones de frontera pueden ser simétricas, por lo que conviene mantenerlas como asociaciones reflexivas bien documentadas.
+- No queda totalmente claro si la capital debe ser siempre una ciudad existente dentro de la composición o si puede marcarse con un atributo booleano; se eligió la opción más clara para UML.

@@ -1,31 +1,35 @@
 # Análisis - Ejercicio 8 (Aeródromo)
 
 ## 1. Sustantivos detectados
-* **Avión:** Queda como Clase.
-* **TipoAvion:** Queda como Clase (separado de avión porque varios aviones pueden ser del mismo tipo).
-* **Hangar:** Queda como Clase.
-* **Persona:** Queda como Clase (Superclase).
-* **Piloto:** Queda como Clase (Subclase de Persona).
-* **Mecánico:** Queda como Clase (Subclase de Persona).
-* **Propietario:** Queda como Clase.
-* **Servicio:** Queda como Clase intermedia (resuelve la relación M:N entre Mecánico y Avión).
+- **Avión**: clase.
+- **TipoAvion**: clase, separada de Avión porque varios aviones pueden compartir el mismo tipo.
+- **Hangar**: clase.
+- **Persona**: clase base.
+- **Piloto**: subclase de Persona.
+- **Mecánico**: subclase de Persona.
+- **Propietario**: clase/rol vinculado a la propiedad del avión.
+- **Servicio**: clase intermedia que resuelve la relación N:N entre Mecánico y Avión.
 
 ## 2. Verbos que conectan clases
-* se guarda (Avión en Hangar).
-* es de tipo (Avión es de TipoAvion).
-* es dueño de (Propietario tiene Aviones).
-* realiza mantenimiento (Mecánico realiza Servicio a Avión).
-* está autorizado a volar (Piloto vuela TipoAvion).
-* puede dar mantenimiento (Mecánico repara TipoAvion).
+- **se guarda**: Avión en Hangar.
+- **es de tipo**: Avión es de TipoAvion.
+- **es dueño de**: Propietario tiene Aviones.
+- **realiza mantenimiento**: Mecánico realiza Servicio a Avión.
+- **está autorizado a volar**: Piloto vuela TipoAvion.
+- **puede dar mantenimiento**: Mecánico repara TipoAvion.
 
 ## 3. Restricciones o reglas del enunciado
-* No puede haber dos servicios realizados al mismo avión en la misma fecha con el mismo tipo de trabajo.
+- No puede haber dos servicios realizados al mismo avión en la misma fecha con el mismo tipo de trabajo.
+- El avión se identifica por su matrícula.
+- El propietario actual del avión tiene asociada la fecha de adquisición.
 
-## 4. Justificación de decisiones (Herencia, Composición/Agregación y Multiplicidad)
-* **Persona, Piloto y Mecánico (Herencia):** El enunciado especifica atributos comunes para "Persona" (SSN, nombre, dirección, teléfono) y luego suma atributos específicos para Mecánicos (salario, turno) y Pilotos (licencia, restricciones). Se aplica herencia (`Piloto --> Persona` y `Mecanico --> Persona`).
-* **Avión y Hangar (Asociación):** Un avión se guarda en un hangar (`*` a `1`). No es composición porque el avión existe independientemente de si el hangar es destruido.
-* **Mecánico, Avión y Servicio (Clase Intermedia):** Un mecánico repara muchos aviones y un avión es reparado por muchos mecánicos. Esta asociación de muchos a muchos genera datos propios (fecha, horas, tipo de trabajo), por lo que se crea la clase `Servicio`.
-* **Propietario y Avión (Agregación):** El propietario es el "todo" lógico en la relación de posesión de los aviones (las partes), pero el avión tiene vida independiente.
+## 4. Justificación de decisiones (herencia, asociación, agregación y multiplicidad)
+- **Persona, Piloto y Mecánico (herencia):** el enunciado define atributos comunes para Persona y atributos específicos para Piloto y Mecánico, por lo que corresponde una generalización.
+- **Avión y TipoAvion (asociación):** un avión pertenece a un tipo, y un tipo puede corresponder a muchos aviones.
+- **Avión y Hangar (asociación):** un avión se guarda en un hangar. No es composición porque el avión existe independientemente del hangar.
+- **Mecánico, Avión y Servicio (clase intermedia):** la relación entre mecánico y avión es N:N y además tiene atributos propios (`fecha`, `horasInvertidas`, `tipoTrabajo`), por eso se modela `Servicio`.
+- **Propietario y Avión (agregación):** el propietario es el todo lógico de la relación de posesión, pero el avión mantiene existencia independiente.
 
 ## 5. Dudas abiertas o problemas encontrados
-* El enunciado dice "fecha de adquisición por su propietario actual". Este atributo se colocó en la relación entre Avión y Propietario (o directamente en Avión, asumiendo que solo se guarda el actual).
+- El atributo “fecha de adquisición por su propietario actual” debe quedar asociado al vínculo entre Propietario y Avión.
+- Conviene revisar si la autorización de un piloto o mecánico sobre un `TipoAvion` puede cambiar con el tiempo, porque eso podría requerir una clase intermedia si se quiere historial.

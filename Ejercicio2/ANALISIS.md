@@ -27,3 +27,4 @@
 - El enunciado dice que un país tiene una capital y que cada provincia también tiene una capital. Se modela como una referencia a una ciudad, no como una clase aparte.
 - Las relaciones de frontera pueden ser simétricas, por lo que conviene mantenerlas como asociaciones reflexivas bien documentadas.
 - No queda totalmente claro si la capital debe ser siempre una ciudad existente dentro de la composición o si puede marcarse con un atributo booleano; se eligió la opción más clara para UML.
+- **Aclaración final sobre la capital:** la capital no se modela como clase porque no agrega información nueva al dominio; es simplemente una **Ciudad** que cumple el rol de capital. En UML, esto evita duplicar conceptos y deja explícito que toda capital pertenece al conjunto de ciudades ya definidas.

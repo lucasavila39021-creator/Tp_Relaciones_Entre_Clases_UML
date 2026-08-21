@@ -44,13 +44,13 @@ Si no te aparece, corré manualmente desde la carpeta `src` del ejercicio corres
 | Ejercicio | Tema | Estado |
 
 | 1 | Figuras geométricas | ⬜ Pendiente |
-| 2 | Países y provincias | ⬜ Pendiente |
+| 2 | Países y provincias | ✅ Completo |
 | 3 | Control de gasto público | ✅ Completo |
 | 4 | Cooperativa de agricultores | ✅ Completo |
-| 5 | Restaurantes y platos | ⬜ Pendiente |
+| 5 | Restaurantes y platos | ✅ Completo |
 | 6 | Parques nacionales | ⬜ Pendiente |
 | 7 | Campeonato de esquí | ✅ Completo |
-| 8 | Aeródromo | ⬜ Pendiente |
+| 8 | Aeródromo | ✅ Completo |
 | 9 | Museo | ⬜ Pendiente |
 | 10 | Juegos olímpicos | ⬜ Pendiente |
 | 11 | Cosmética Natural | ✅ Completo |

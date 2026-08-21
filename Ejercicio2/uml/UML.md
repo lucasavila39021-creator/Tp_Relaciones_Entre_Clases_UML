@@ -11,7 +11,6 @@ classDiagram
     }
     class Ciudad {
         -nombre: String
-        -esCapital: boolean
     }
 
     Continente "1" -- "1..*" Pais : se localiza en >

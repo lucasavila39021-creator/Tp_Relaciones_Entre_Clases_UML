@@ -1,5 +1,14 @@
 # Ejercicio 9 - Análisis (Museo de Arte)
 
+## Enunciado original
+El museo tiene una colección de objetos de arte. Cada uno tiene su nº de identificación, artista y año de creación (si se conocen), título y una descripción.
+
+Los objetos de arte se clasifican en varias categorías. Basándose en su tipo se distinguen pinturas, esculturas y otros. Las pinturas incluyen el tipo de pintura (óleo, acuarela, ...), soporte (lienzo, papel, ...) y estilo (impresionista, abstracto, etc.). Para las esculturas se almacena el material (mármol, bronce, ...), altura, peso y estilo. Basándose en su pertenencia al museo se distinguen objetos en préstamo u objetos de la colección permanente. Para estos últimos se guarda la fecha de adquisición y coste además de si está en exposición o en almacén. Para las obras en préstamo se incluye el nombre de la colección a la que pertenece, la fecha en la que se recibió en préstamo y la fecha de devolución.
+
+Por cada objeto de arte se tiene también información sobre su origen mediante información de su país y cultura (romano, egipcio, maya, etc.) y su época (renacimiento, neoclásico, etc.). También se guarda información de los artistas: su nombre (se supone que único), fecha de nacimiento y en su caso de defunción, país de origen, época, estilo principal y descripción.
+
+En el museo se celebran diferentes exposiciones, cada una de ellas tiene un nombre que la identifica, tiene una fecha de comienzo y de finalización e incluye el conjunto de objetos de arte exhibidos. Sobre las colecciones de obras de arte con las que el museo intercambia obras es útil guardar su nombre (único), tipo (museo, colección privada, etc.), descripción, dirección, teléfono y el nombre de la persona de contacto.
+
 ## 1. Sustantivos detectados
 
 | Sustantivo | ¿Clase o atributo? |

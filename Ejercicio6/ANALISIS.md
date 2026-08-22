@@ -1,5 +1,26 @@
 # Ejercicio 6 - Análisis (Parques Naturales)
 
+## Enunciado original
+Por cada comunidad autónoma (CA) se guarda su nombre, sus parques y el organismo responsable de estos. Hay parques que se extienden por varias CAs. De un parque se almacena su nombre (no habrá dos de igual nombre), la fecha en la que fue declarado PN, sus diferentes áreas y los km2 de cada una.
+
+No hay dos áreas del mismo PN que se llamen igual.
+
+En cada área de un parque residen varias especies. Cada especie tiene sus nombres científico y vulgar y se conoce el nº de individuos en cada área.
+
+Por cada especie vegetal desean conocer si tiene floración y, en ese caso, en qué periodo florece. De las especies animales se guardará cuál es su periodo de celo. Según su alimentación, las especies animales se clasifican en herbívoras, carnívoras y omnívoras. También hay que registrar qué animales o vegetales sirven de alimento a los animales de los parques.
+
+Por cada visitante a PNs se recoge su DNI, nombre, dirección y profesión. Los PN tienen alojamientos propios que organizan excursiones. No hay dos alojamientos de un parque con igual nombre, además, se guarda su capacidad, categoría, visitantes que lo utilizaron y en qué habitación y fechas de inicio y fin.
+
+Cada excursión tiene un código que la identifica. Además, se registra el día, la hora y los alojamientos que la organizan. También se almacenan los visitantes que se inscriben en cada excursión.
+
+El personal que trabaja en cada parque puede ser: celador, investigador y guarda. Una persona puede desempeñar varios cargos al mismo tiempo (por ejemplo, guarda e investigador). Para todos ellos se guarda su DNI, nombre, dirección, teléfono, sueldo, nº de seguridad social y el parque donde trabaja.
+
+Cada parque tiene una o varias entradas. Éstas se numeran del uno al nº de entradas al mismo. Cada celador está destinado en una de ellas y se encarga de registrar quién visita el parque y en qué fecha.
+
+Cada guarda tiene asignada un área de su parque y la recorre en un vehículo, del que se almacena su tipo y matrícula. Se pueden asignar varios guardas a un área del parque y varios celadores a una entrada.
+
+Por cada investigador se recoge su titulación, los proyectos de investigación en los que ha intervenido junto a las especies investigadas por él en cada proyecto. De cada proyecto se registra su nombre, presupuesto y período de realización (fechas de inicio y fin).
+
 ## 1. Sustantivos detectados
 
 | Sustantivo | ¿Clase o atributo? |

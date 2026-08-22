@@ -3,7 +3,7 @@ import java.time.LocalTime;
 
 public class Main {
     public static void main(String[] args) {
-        // 1. Crear Parque, Entradas y Áreas
+        //  Crear Parque, Entradas y Áreas
         ParqueNatural parque = new ParqueNatural("Sierra Nevada", LocalDate.of(1999, 1, 14));
         Entrada entrada1 = new Entrada(1);
         Entrada entrada2 = new Entrada(2);
@@ -15,7 +15,7 @@ public class Main {
         parque.agregarArea(areaNorte);
         parque.agregarArea(areaSur);
 
-        // 2. Crear Especies y registrar censos
+        //  Crear Especies y registrar censos
         EspecieVegetal pino = new EspecieVegetal("Pinus sylvestris", "Pino Silvestre", true, "Primavera");
         EspecieAnimal lobo = new EspecieAnimal("Canis lupus", "Lobo Ibérico", "Enero-Febrero", TipoAlimentacion.CARNIVORO);
         EspecieAnimal ciervo = new EspecieAnimal("Cervus elaphus", "Ciervo Común", "Septiembre-Octubre", TipoAlimentacion.HERBIVORO);
@@ -27,7 +27,7 @@ public class Main {
         areaSur.registrarCenso(ciervo, 120);
         areaNorte.registrarCenso(lobo, 15);
 
-        // 3. Crear Personal y demostrar el rol multifunción (Guarda + Investigador)
+        //  Crear Personal y demostrar el rol multifunción (Guarda + Investigador)
         Personal empleadoMultirrol = new Personal("12345678A", "Carlos Méndez", "Av. del Parque 45", "555-1234", 2500.0, "SS-998877");
 
         // Asignar rol Guarda
@@ -49,7 +49,7 @@ public class Main {
         parque.contratarPersonal(empleadoMultirrol);
         parque.contratarPersonal(celadorPedro);
 
-        // 4. Visitantes, Alojamientos y Excursiones
+        //  Visitantes, Alojamientos y Excursiones
         Visitante visitante = new Visitante("44556677C", "Lucía Fernández", "Calle Mayor 8", "Arquitecta");
         rolCelador.registrarVisita(visitante, LocalDate.of(2026, 8, 20));
 

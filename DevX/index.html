@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevX — Feria de proyectos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===================== BLOQUE: page-header ===================== -->
+  <header class="page-header">
+    <a class="page-header__logo" href="#inicio">DevX</a>
+
+    <nav class="page-header__nav" aria-label="Navegación principal">
+      <!-- MODIFICADOR: el link de la sección actual lleva --active -->
+      <a class="page-header__link page-header__link--active" href="#inicio">Inicio</a>
+      <a class="page-header__link" href="#info">Info</a>
+      <a class="page-header__link" href="#proyectos">Proyectos</a>
+    </nav>
+
+    <a class="page-header__button" href="#proyectos">Inscribí tu proyecto</a>
+  </header>
+
+  <main>
+
+    <!-- ===================== BLOQUE: hero ===================== -->
+    <section class="hero" id="inicio">
+      <h1 class="hero__title">Feria de proyectos DevX</h1>
+      <p class="hero__subtitle">Sábado 14 de noviembre · Mendoza · Entrada libre y gratuita</p>
+
+      <!-- Buscador: acá se va a aplicar el :focus -->
+      <form class="hero__search" role="search">
+        <label class="hero__label" for="buscar">Buscar proyecto</label>
+        <input class="hero__input" type="text" id="buscar" placeholder="Ej: seguridad, IA, videojuegos...">
+        <button class="hero__button" type="submit">Buscar</button>
+      </form>
+    </section>
+
+   <!-- ===================== BLOQUE: features ===================== -->
+<section class="features" id="info">
+  <h2 class="features__heading">¿Qué vas a encontrar?</h2>
+
+  <!-- Imagen ilustrativa de la sección (decorativa) -->
+  <img class="features__image" src="img/quevasaencontrar.jpg" alt="">
+
+  <ul class="features__list">
+    <li class="features__item">
+      <span class="features__icon" aria-hidden="true">🎟️</span>
+      <h3 class="features__title">Entrada gratuita</h3>
+      <p class="features__text">Vení a mostrar tu proyecto o a conocer el de otros.</p>
+    </li>
+
+    <li class="features__item">
+      <span class="features__icon" aria-hidden="true">💼</span>
+      <h3 class="features__title">Reclutadores</h3>
+      <p class="features__text">Empresas IT de la región buscando nuevos talentos.</p>
+    </li>
+
+    <li class="features__item">
+      <span class="features__icon" aria-hidden="true">🏫</span>
+      <h3 class="features__title">Escuelas</h3>
+      <p class="features__text">Información para instituciones educativas que quieran participar.</p>
+    </li>
+  </ul>
+</section>
+
+    <!-- ===================== BLOQUE: project-list ===================== -->
+    <section class="project-list" id="proyectos">
+      <!-- Este título va a ser el position: sticky -->
+      <h2 class="project-list__title">Proyectos en exhibición</h2>
+
+      <div class="project-list__grid">
+
+        <!-- ===== BLOQUE: project-card (1) ===== -->
+        <article class="project-card">
+          <p class="project-card__category">Seguridad</p>
+          <h3 class="project-card__title">SafeNet</h3>
+          <p class="project-card__text">Herramienta que detecta contraseñas débiles y enseña a crear claves seguras.</p>
+
+          <!-- Contenedor de referencia para el badge con position: absolute -->
+          <div class="project-card__media">
+            <img class="project-card__image" src="img/safenet.jpg" alt="Escudo digital con un candado">
+            <span class="project-card__badge">2° año</span>
+          </div>
+
+          <footer class="project-card__footer">
+            <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
+            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <span class="project-card__label">⭐ Destacado</span>
+            <button class="project-card__button" type="button">Ver detalle</button>
+          </footer>
+        </article>
+
+        <!-- ===== project-card (2): YA DESTACADA → clase base + modificador ===== -->
+        <article class="project-card project-card--featured">
+          <p class="project-card__category">Inteligencia Artificial</p>
+          <h3 class="project-card__title">MentorIA</h3>
+          <p class="project-card__text">Chatbot que ayuda a estudiantes a repasar temas antes de un parcial.</p>
+
+          <div class="project-card__media">
+            <img class="project-card__image" src="img/mentoria.jpg" alt="Robot usando una computadora portátil">
+            <span class="project-card__badge">3° año</span>
+          </div>
+
+          <footer class="project-card__footer">
+            <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
+            <button class="project-card__favorite project-card__favorite--active" type="button" aria-label="Quitar de destacados" aria-pressed="true">♥</button>
+            <span class="project-card__label">⭐ Destacado</span>
+            <button class="project-card__button" type="button">Ver detalle</button>
+          </footer>
+        </article>
+
+        <!-- ===== project-card (3) ===== -->
+        <article class="project-card">
+          <p class="project-card__category">Gamer</p>
+          <h3 class="project-card__title">PixelQuest</h3>
+          <p class="project-card__text">Videojuego educativo para aprender lógica de programación jugando.</p>
+
+          <div class="project-card__media">
+            <img class="project-card__image" src="img/pixelquest.jpg" alt="Control de videojuegos de colores">
+            <span class="project-card__badge">1° año</span>
+          </div>
+
+          <footer class="project-card__footer">
+            <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
+            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <span class="project-card__label">⭐ Destacado</span>
+            <button class="project-card__button" type="button">Ver detalle</button>
+          </footer>
+        </article>
+
+        <!-- ===== project-card (4) ===== -->
+        <article class="project-card">
+          <p class="project-card__category">Blockchain</p>
+          <h3 class="project-card__title">ChainVote</h3>
+          <p class="project-card__text">Sistema de votación estudiantil transparente usando blockchain.</p>
+
+          <div class="project-card__media">
+            <img class="project-card__image" src="img/blockchain.jpg" alt="Símbolo de blockchain sobre fondo oscuro">
+            <span class="project-card__badge">2° año</span>
+          </div>
+
+          <footer class="project-card__footer">
+            <span class="project-card__rating" aria-label="3 de 5 estrellas">★★★☆☆</span>
+            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <span class="project-card__label">⭐ Destacado</span>
+            <button class="project-card__button" type="button">Ver detalle</button>
+          </footer>
+        </article>
+
+        <!-- ===== project-card (5) ===== -->
+        <article class="project-card">
+          <p class="project-card__category">Web</p>
+          <h3 class="project-card__title">EcoRuta</h3>
+          <p class="project-card__text">Mapa web con los puntos de reciclaje más cercanos en Mendoza.</p>
+
+          <div class="project-card__media">
+            <img class="project-card__image" src="img/ecoruta.jpg" alt="Logo de EcoRuta: marcador de mapa con hojas">
+            <span class="project-card__badge">3° año</span>
+          </div>
+
+          <footer class="project-card__footer">
+            <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
+            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <span class="project-card__label">⭐ Destacado</span>
+            <button class="project-card__button" type="button">Ver detalle</button>
+          </footer>
+        </article>
+
+        <!-- ===== project-card (6) ===== -->
+        <article class="project-card">
+          <p class="project-card__category">IoT</p>
+          <h3 class="project-card__title">AgroSense</h3>
+          <p class="project-card__text">Sensores que avisan cuándo regar un viñedo para ahorrar agua.</p>
+
+          <div class="project-card__media">
+            <img class="project-card__image" src="img/agrosense.jpg" alt="Mano sosteniendo un celular junto a una planta con sensores">
+            <span class="project-card__badge">3° año</span>
+          </div>
+
+          <footer class="project-card__footer">
+            <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
+            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <span class="project-card__label">⭐ Destacado</span>
+            <button class="project-card__button" type="button">Ver detalle</button>
+          </footer>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== BLOQUE: modal ===================== -->
+  <!-- Está siempre en el HTML: se oculta con CSS y se muestra agregando modal--open -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <button class="modal__close" type="button" aria-label="Cerrar">✕</button>
+      <h2 class="modal__title" id="modal-title">MentorIA</h2>
+      <p class="modal__text">Chatbot que ayuda a estudiantes a repasar temas antes de un parcial. Desarrollado por alumnos de 3° año.</p>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -95,7 +95,7 @@
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
             <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
             <span class="project-card__label">⭐ Destacado</span>
-            <button class="project-card__button" type="button">Ver detalle</button>
+            <a class="project-card__button" href="#modal-safenet">Ver detalle</a>
           </footer>
         </article>
 
@@ -114,8 +114,8 @@
             <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
             <button class="project-card__favorite project-card__favorite--active" type="button" aria-label="Quitar de destacados" aria-pressed="true">♥</button>
             <span class="project-card__label">⭐ Destacado</span>
-            <!-- Link a #modal: al hacer clic, la URL termina en #modal y .modal:target lo muestra -->
-            <a class="project-card__button project-card__button--primary" href="#modal">Ver detalle</a>
+            <!-- Link a #modal-mentoria: al hacer clic, la URL termina en #modal-mentoria y .modal:target lo muestra -->
+            <a class="project-card__button project-card__button--primary" href="#modal-mentoria">Ver detalle</a>
           </footer>
         </article>
 
@@ -134,7 +134,7 @@
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
             <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
             <span class="project-card__label">⭐ Destacado</span>
-            <button class="project-card__button" type="button">Ver detalle</button>
+            <a class="project-card__button" href="#modal-pixelquest">Ver detalle</a>
           </footer>
         </article>
 
@@ -153,7 +153,7 @@
             <span class="project-card__rating" aria-label="3 de 5 estrellas">★★★☆☆</span>
             <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
             <span class="project-card__label">⭐ Destacado</span>
-            <button class="project-card__button" type="button">Ver detalle</button>
+            <a class="project-card__button" href="#modal-chainvote">Ver detalle</a>
           </footer>
         </article>
 
@@ -172,7 +172,7 @@
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
             <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
             <span class="project-card__label">⭐ Destacado</span>
-            <button class="project-card__button" type="button">Ver detalle</button>
+            <a class="project-card__button" href="#modal-ecoruta">Ver detalle</a>
           </footer>
         </article>
 
@@ -191,7 +191,7 @@
             <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
             <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
             <span class="project-card__label">⭐ Destacado</span>
-            <button class="project-card__button" type="button">Ver detalle</button>
+            <a class="project-card__button" href="#modal-agrosense">Ver detalle</a>
           </footer>
         </article>
 
@@ -201,14 +201,62 @@
   </main>
 
   <!-- ===================== BLOQUE: modal ===================== -->
-  <!-- Está siempre en el HTML: se oculta con CSS y se muestra con .modal:target (sin JS) -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <!-- Están siempre en el HTML: se ocultan con CSS y se muestran con .modal:target (sin JS) -->
+  <!-- Un modal por proyecto. Cada "Ver detalle" apunta al id de SU modal
+       (ej: href="#modal-safenet") y .modal:target muestra solo ese. -->
+
+  <div class="modal" id="modal-safenet" role="dialog" aria-modal="true" aria-labelledby="modal-safenet-title">
     <div class="modal__overlay"></div>
     <div class="modal__content">
-      <!-- href="#" saca el #modal de la URL → deja de ser :target → se oculta -->
-      <a class="modal__close" href="#" aria-label="Cerrar">✕</a>
-      <h2 class="modal__title" id="modal-title">MentorIA</h2>
+      <!-- href="#cerrar" saca el #modal-... de la URL → deja de ser :target → se oculta. Ningún elemento tiene ese id, así que la página no scrollea -->
+      <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="modal-safenet-title">SafeNet</h2>
+      <p class="modal__text">Herramienta que detecta contraseñas débiles y enseña a crear claves seguras. Desarrollado por alumnos de 2° año.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-mentoria" role="dialog" aria-modal="true" aria-labelledby="modal-mentoria-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="modal-mentoria-title">MentorIA</h2>
       <p class="modal__text">Chatbot que ayuda a estudiantes a repasar temas antes de un parcial. Desarrollado por alumnos de 3° año.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-pixelquest" role="dialog" aria-modal="true" aria-labelledby="modal-pixelquest-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="modal-pixelquest-title">PixelQuest</h2>
+      <p class="modal__text">Videojuego educativo para aprender lógica de programación jugando. Desarrollado por alumnos de 1° año.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-chainvote" role="dialog" aria-modal="true" aria-labelledby="modal-chainvote-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="modal-chainvote-title">ChainVote</h2>
+      <p class="modal__text">Sistema de votación estudiantil transparente usando blockchain. Desarrollado por alumnos de 2° año.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-ecoruta" role="dialog" aria-modal="true" aria-labelledby="modal-ecoruta-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="modal-ecoruta-title">EcoRuta</h2>
+      <p class="modal__text">Mapa web con los puntos de reciclaje más cercanos en Mendoza. Desarrollado por alumnos de 3° año.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-agrosense" role="dialog" aria-modal="true" aria-labelledby="modal-agrosense-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="modal-agrosense-title">AgroSense</h2>
+      <p class="modal__text">Sensores que avisan cuándo regar un viñedo para ahorrar agua. Desarrollado por alumnos de 3° año.</p>
     </div>
   </div>
 

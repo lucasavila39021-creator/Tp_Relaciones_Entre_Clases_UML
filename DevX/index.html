@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DevX — Feria de proyectos</title>
   <link rel="stylesheet" href="css/styles.css">
+  <!-- <link rel="stylesheet" href="css/prueba.css"> -->
 </head>
 <body>
 
   <!-- ===================== BLOQUE: page-header ===================== -->
   <header class="page-header">
     <a class="page-header__logo" href="#inicio">DevX</a>
+
+    <!-- Menú hamburguesa sin JS: el checkbox guarda el estado (abierto/cerrado)
+         y el label es el botón ☰ que lo tilda. Tienen que ir ANTES del nav
+         para poder usar el combinador ~ -->
+    <input type="checkbox" id="menu-toggle" class="page-header__checkbox">
+    <label for="menu-toggle" class="page-header__toggle" aria-label="Abrir menú">☰</label>
 
     <nav class="page-header__nav" aria-label="Navegación principal">
       <!-- MODIFICADOR: el link de la sección actual lleva --active -->
@@ -107,7 +114,8 @@
             <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
             <button class="project-card__favorite project-card__favorite--active" type="button" aria-label="Quitar de destacados" aria-pressed="true">♥</button>
             <span class="project-card__label">⭐ Destacado</span>
-            <button class="project-card__button" type="button">Ver detalle</button>
+            <!-- Link a #modal: al hacer clic, la URL termina en #modal y .modal:target lo muestra -->
+            <a class="project-card__button project-card__button--primary" href="#modal">Ver detalle</a>
           </footer>
         </article>
 
@@ -193,11 +201,12 @@
   </main>
 
   <!-- ===================== BLOQUE: modal ===================== -->
-  <!-- Está siempre en el HTML: se oculta con CSS y se muestra agregando modal--open -->
+  <!-- Está siempre en el HTML: se oculta con CSS y se muestra con .modal:target (sin JS) -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal__overlay"></div>
     <div class="modal__content">
-      <button class="modal__close" type="button" aria-label="Cerrar">✕</button>
+      <!-- href="#" saca el #modal de la URL → deja de ser :target → se oculta -->
+      <a class="modal__close" href="#" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="modal-title">MentorIA</h2>
       <p class="modal__text">Chatbot que ayuda a estudiantes a repasar temas antes de un parcial. Desarrollado por alumnos de 3° año.</p>
     </div>

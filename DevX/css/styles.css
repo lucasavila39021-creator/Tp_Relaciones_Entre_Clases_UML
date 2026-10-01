@@ -188,7 +188,31 @@ html {
   color: #ffffff;
   opacity: 0.8;
   max-width: 600px;
-  margin: 0 auto 32px auto;        /* El espacio grande pasa acá, antes del buscador */
+  margin: 0 auto 24px auto;        /* Espacio antes del botón "Reservá tu entrada" */
+}
+
+/* Botón ámbar "Reservá tu entrada" (mismo estilo que Buscar) */
+.hero__cta {
+  display: inline-block;
+  margin-bottom: 28px;             /* Separa el botón del buscador */
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  background-color: var(--color-accent);
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.hero__cta:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.hero__cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
 }
 
 .hero__search {
@@ -706,6 +730,23 @@ html {
   outline-offset: 2px;
 }
 
+/* Link al formulario de inscripción dentro de una descripción */
+.event-info__link {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-underline-offset: 3px;
+}
+
+.event-info__link:hover {
+  color: var(--color-primary-light);
+}
+
+.event-info__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 /* --------------------------------------------------------------------------
    6. BLOQUE: modal (Superposición y estado oculto sin JS)
    Requisitos:
@@ -751,6 +792,16 @@ html {
   border-radius: 12px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
   z-index: 101;
+  /* Si el contenido es más alto que la pantalla (ej: el formulario en celular),
+     el modal no se sale: scrollea por dentro */
+  max-height: 90vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;    /* El scroll no "se pasa" a la página de atrás */
+}
+
+/* Modificador BEM: modal más ancho, para el formulario de inscripción */
+.modal__content--wide {
+  max-width: 680px;
 }
 
 .modal__close {
@@ -791,6 +842,286 @@ html {
   font-size: 1rem;
   color: var(--color-text);
   line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   6b. BLOQUE: signup-form (formulario de inscripción, dentro del modal)
+   - Campos de a dos por fila en PC con flexbox; --full ocupa todo el ancho
+   - :focus con el mismo estilo morado del buscador
+   - :user-invalid marca en rojo SOLO después de que el usuario interactúa
+   -------------------------------------------------------------------------- */
+.signup-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  margin-top: 8px;
+}
+
+.signup-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 calc(50% - 10px);      /* 2 por fila (10px = mitad del gap horizontal) */
+  min-width: 0;
+}
+
+/* Modificador BEM: campo a todo el ancho */
+.signup-form__field--full {
+  flex-basis: 100%;
+}
+
+/* Modificador BEM: checkbox y su texto en la misma fila */
+.signup-form__field--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.signup-form__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Estilo compartido de los 3 tipos de campo */
+.signup-form__input,
+.signup-form__select,
+.signup-form__textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.signup-form__textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.signup-form__check {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* :focus con el estilo morado del buscador */
+.signup-form__input:focus,
+.signup-form__select:focus,
+.signup-form__textarea:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 4px rgba(216, 180, 254, 0.45);
+}
+
+.signup-form__check:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* :user-invalid: rojo solo si el campo es inválido Y el usuario ya lo tocó
+   (escribió y salió, o intentó enviar). Va después de :focus para ganarle */
+.signup-form__input:user-invalid,
+.signup-form__select:user-invalid,
+.signup-form__textarea:user-invalid {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.signup-form__input:user-invalid:focus,
+.signup-form__select:user-invalid:focus,
+.signup-form__textarea:user-invalid:focus {
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+}
+
+.signup-form__check:user-invalid {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+.signup-form__hint {
+  flex-basis: 100%;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.signup-form__submit {
+  flex-basis: 100%;
+  padding: 12px 22px;
+  font: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.signup-form__submit:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-1px);
+}
+
+.signup-form__submit:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+/* Modificador BEM: formulario compacto (reserva) → todo en una columna */
+.signup-form--compact {
+  gap: 14px;
+}
+
+.signup-form--compact .signup-form__field {
+  flex-basis: 100%;
+}
+
+/* Grupo de opciones con aspecto de botones (fieldset sin borde) */
+.signup-form__options {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.signup-form__options > legend {
+  margin-bottom: 6px;
+}
+
+/* Radio escondido como el checkbox de los corazones.
+   NO display:none: así se llega con Tab y se cambia de opción con las flechas */
+.signup-form__radio {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* El label es el "botón" que se ve */
+.signup-form__option {
+  flex: 1 1 0;
+  padding: 10px 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.signup-form__option:hover {
+  border-color: var(--color-primary-light);
+}
+
+/* TRUCO SIN JS: radio:checked + label → el label elegido se pinta de morado */
+.signup-form__radio:checked + .signup-form__option {
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.signup-form__radio:focus-visible + .signup-form__option {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+/* Turno sin elegir, después de intentar enviar */
+.signup-form__radio:user-invalid + .signup-form__option {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+/* Grupos condicionales: ocultos por defecto (fieldset sin borde) */
+.signup-form__group {
+  display: none;
+  flex-basis: 100%;
+  min-width: 0;
+  margin: 8px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.signup-form__group > legend {
+  margin-bottom: 8px;
+  color: var(--color-primary-dark);
+}
+
+.signup-form__group .signup-form__field + .signup-form__field {
+  margin-top: 12px;
+}
+
+/* TRUCO SIN JS: radio:checked ~ grupo → se muestra solo el grupo del tipo elegido
+   (~ = cualquier hermano que venga DESPUÉS, no hace falta que esté pegado) */
+#tipo-persona:checked ~ .signup-form__group--person,
+#tipo-escuela:checked ~ .signup-form__group--school,
+#tipo-empresa:checked ~ .signup-form__group--company {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   6c. BLOQUE: ticket (confirmación de reserva con forma de entrada)
+   Muescas: dos radial-gradient, cada uno cubre la mitad del fondo y deja un
+   círculo transparente en su borde (izquierdo / derecho).
+   Borde punteado: outline dashed hacia adentro (outline-offset negativo),
+   así no lo cortan las muescas.
+   -------------------------------------------------------------------------- */
+.ticket {
+  margin-top: 20px;                /* Deja lugar a la ✕ del modal */
+  padding: 32px 36px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 0 50%, transparent 14px, #f3e8ff 15px) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 50%, transparent 14px, #f3e8ff 15px) right / 51% 100% no-repeat;
+  border-radius: 12px;
+  outline: 2px dashed var(--color-primary-light);
+  outline-offset: -20px;           /* El punteado queda adentro, lejos de las muescas */
+  filter: drop-shadow(0 4px 6px rgba(107, 33, 168, 0.15)); /* La sombra respeta las muescas */
+}
+
+.ticket__event {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.ticket__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+}
+
+.ticket__info {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.ticket__note {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 2px dashed #d8b4fe;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b45309;
 }
 
 /* --------------------------------------------------------------------------
@@ -888,5 +1219,24 @@ html {
   .project-card__footer {
     justify-content: flex-start;
     gap: 12px;
+  }
+
+  /* Modal con menos relleno para aprovechar el ancho del celular */
+  .modal__content {
+    width: calc(100% - 32px);
+    padding: 28px 18px 24px;
+  }
+
+  /* Formulario: un campo por fila */
+  .signup-form__field {
+    flex-basis: 100%;
+  }
+
+  .ticket {
+    padding: 30px 28px;
+  }
+
+  .ticket__title {
+    font-size: 1.3rem;
   }
 }

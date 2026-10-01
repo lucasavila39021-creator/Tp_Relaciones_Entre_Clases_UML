@@ -25,7 +25,8 @@
       <a class="page-header__link" href="#proyectos">Proyectos</a>
     </nav>
 
-    <a class="page-header__button" href="#proyectos">Inscribí tu proyecto</a>
+    <!-- Abre el modal #inscripcion con :target -->
+    <a class="page-header__button" href="#inscripcion">Inscribí tu proyecto</a>
   </header>
 
   <main>
@@ -35,6 +36,8 @@
       <h1 class="hero__title">Feria de proyectos DevX</h1>
       <p class="hero__subtitle">Sábado 14 de noviembre · Mendoza · Entrada libre y gratuita</p>
       <p class="hero__location">📍 Universidad Tecnológica Nacional — Facultad Regional Mendoza · Laboratorio de Java</p>
+      <!-- Abre el modal #reserva con :target -->
+      <a class="hero__cta" href="#reserva">Reservá tu entrada</a>
 
       <!-- Buscador: acá se va a aplicar el :focus -->
       <!-- action="#proyectos": al enviar, el navegador va a esa sección. El input no tiene name,
@@ -244,6 +247,9 @@
         <h3 class="event-info__heading">🎟️ Entrada libre con reserva</h3>
         <p class="event-info__text">La entrada es libre y gratuita para todo público. Como el cupo del salón es limitado, te pedimos que reserves tu lugar en la mesa de informes o con tu docente antes del jueves 12 de noviembre.</p>
         <p class="event-info__text">La feria se realiza en el Laboratorio de Java de la UTN Facultad Regional Mendoza (Coronel Rodríguez 273, Ciudad de Mendoza), de 10 a 18 h. Podés ir y venir durante todo el día.</p>
+        <p class="event-info__text">
+          <a class="event-info__link" href="#reserva">Reservá tu entrada</a>
+        </p>
       </article>
 
       <article class="event-info__item event-info__item--recruiters" id="info-reclutadores">
@@ -255,6 +261,9 @@
       <article class="event-info__item event-info__item--schools" id="info-escuelas">
         <h3 class="event-info__heading">🏫 Escuelas que quieran participar</h3>
         <p class="event-info__text">Las escuelas secundarias pueden visitar la feria con sus cursos o presentar un proyecto propio en un stand. Solo tienen que inscribirse con un docente responsable antes del 31 de octubre.</p>
+        <p class="event-info__text">
+          <a class="event-info__link" href="#inscripcion">Completá el formulario de inscripción</a>
+        </p>
       </article>
 
       <a class="event-info__back" href="#inicio">↑ Volver al inicio</a>
@@ -319,6 +328,219 @@
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="modal-agrosense-title">AgroSense</h2>
       <p class="modal__text">Sensores que avisan cuándo regar un viñedo para ahorrar agua. Desarrollado por alumnos de 3° año.</p>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL: inscripción ===================== -->
+  <!-- Mismo bloque modal. modal__content--wide lo hace más ancho para que entren 2 campos por fila -->
+  <div class="modal" id="inscripcion" role="dialog" aria-modal="true" aria-labelledby="inscripcion-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content modal__content--wide">
+      <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="inscripcion-title">Inscribite a DevX</h2>
+
+      <!-- ===================== BLOQUE: signup-form ===================== -->
+      <!-- Sin JS: el navegador valida solo (required, type="email", minlength...).
+           Si todo es válido, va a #inscripcion-enviada y ese modal se muestra con :target.
+           Los campos NO tienen name: no viaja ningún dato en la URL (no hay backend). -->
+      <form class="signup-form" action="#inscripcion-enviada">
+        <div class="signup-form__field">
+          <label class="signup-form__label" for="sf-nombre">Nombre y apellido</label>
+          <input class="signup-form__input" type="text" id="sf-nombre" autocomplete="name" required minlength="3">
+        </div>
+
+        <div class="signup-form__field">
+          <label class="signup-form__label" for="sf-email">Email</label>
+          <input class="signup-form__input" type="email" id="sf-email" autocomplete="email" required>
+        </div>
+
+        <div class="signup-form__field">
+          <label class="signup-form__label" for="sf-telefono">Teléfono (opcional)</label>
+          <input class="signup-form__input" type="tel" id="sf-telefono" autocomplete="tel">
+        </div>
+
+        <div class="signup-form__field">
+          <label class="signup-form__label" for="sf-participacion">¿Cómo querés participar?</label>
+          <!-- La primera opción tiene value="": con required, el select es inválido hasta que elijas otra -->
+          <select class="signup-form__select" id="sf-participacion" required>
+            <option value="">Elegí una opción</option>
+            <option value="estudiante">Estudiante con proyecto</option>
+            <option value="escuela">Escuela</option>
+            <option value="empresa">Empresa</option>
+          </select>
+        </div>
+
+        <div class="signup-form__field">
+          <label class="signup-form__label" for="sf-institucion">Institución o empresa</label>
+          <input class="signup-form__input" type="text" id="sf-institucion" autocomplete="organization" required>
+        </div>
+
+        <div class="signup-form__field">
+          <label class="signup-form__label" for="sf-proyecto">Nombre del proyecto (opcional)</label>
+          <input class="signup-form__input" type="text" id="sf-proyecto">
+        </div>
+
+        <div class="signup-form__field signup-form__field--full">
+          <label class="signup-form__label" for="sf-mensaje">Contanos brevemente (opcional)</label>
+          <textarea class="signup-form__textarea" id="sf-mensaje" rows="3" maxlength="300"></textarea>
+        </div>
+
+        <!-- --inline: checkbox y texto en la misma fila -->
+        <div class="signup-form__field signup-form__field--full signup-form__field--inline">
+          <input class="signup-form__check" type="checkbox" id="sf-contacto" required>
+          <label class="signup-form__label" for="sf-contacto">Acepto que me contacten por email</label>
+        </div>
+
+        <p class="signup-form__hint">Es una demo: los datos no se guardan.</p>
+
+        <button class="signup-form__submit" type="submit">Enviar inscripción</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL: inscripción enviada ===================== -->
+  <!-- Destino del action del formulario: se muestra con .modal:target -->
+  <div class="modal" id="inscripcion-enviada" role="dialog" aria-modal="true" aria-labelledby="inscripcion-enviada-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <!-- Cierra y lleva a #proyectos: el modal deja de ser :target y la página scrollea hasta ese id -->
+      <a class="modal__close" href="#proyectos" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="inscripcion-enviada-title">¡Gracias por inscribirte!</h2>
+      <p class="modal__text">Nos vemos el sábado 14 de noviembre en el Laboratorio de Java de la UTN FRM. Recordá que esta página es una demo: tus datos no se guardaron.</p>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL: reserva de entrada ===================== -->
+  <div class="modal" id="reserva" role="dialog" aria-modal="true" aria-labelledby="reserva-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
+      <h2 class="modal__title" id="reserva-title">Reservá tu entrada</h2>
+
+      <!-- Reutiliza el bloque signup-form + modificador --compact (una sola columna).
+           Los campos de texto NO tienen name. Los radios SÍ: el navegador agrupa los radios por name
+           (sin él no serían "uno solo a la vez" ni andarían las flechas). Solo viajan tipo y turno. -->
+      <form class="signup-form signup-form--compact" action="#reserva-confirmada">
+
+        <!-- Tipo de reserva. Los 3 radios son hermanos ANTERIORES de los 3 grupos (mismo padre),
+             así funciona #tipo-...:checked ~ .signup-form__group--... -->
+        <fieldset class="signup-form__options">
+          <legend class="signup-form__label">¿Cómo querés reservar?</legend>
+
+          <input class="signup-form__radio" type="radio" name="tipo" value="persona" id="tipo-persona" checked>
+          <label class="signup-form__option" for="tipo-persona">Persona</label>
+
+          <input class="signup-form__radio" type="radio" name="tipo" value="escuela" id="tipo-escuela">
+          <label class="signup-form__option" for="tipo-escuela">Escuela</label>
+
+          <input class="signup-form__radio" type="radio" name="tipo" value="empresa" id="tipo-empresa">
+          <label class="signup-form__option" for="tipo-empresa">Empresa</label>
+
+          <!-- Grupos condicionales: solo se ve el del radio tildado.
+               Sus campos NO llevan required (un required oculto bloquearía el envío sin mostrar el error) -->
+          <fieldset class="signup-form__group signup-form__group--person">
+            <legend class="signup-form__label">Tus datos</legend>
+            <div class="signup-form__field">
+              <label class="signup-form__label" for="rv-nombre">Nombre y apellido</label>
+              <input class="signup-form__input" type="text" id="rv-nombre" autocomplete="name">
+            </div>
+          </fieldset>
+
+          <fieldset class="signup-form__group signup-form__group--school">
+            <legend class="signup-form__label">Datos de la escuela</legend>
+            <div class="signup-form__field">
+              <label class="signup-form__label" for="rv-institucion">Nombre de la institución</label>
+              <input class="signup-form__input" type="text" id="rv-institucion">
+            </div>
+            <div class="signup-form__field">
+              <label class="signup-form__label" for="rv-docente">Docente responsable</label>
+              <input class="signup-form__input" type="text" id="rv-docente">
+            </div>
+            <div class="signup-form__field">
+              <label class="signup-form__label" for="rv-nivel">Nivel</label>
+              <select class="signup-form__select" id="rv-nivel">
+                <option value="">Elegí un nivel</option>
+                <option value="primario">Primario</option>
+                <option value="secundario">Secundario</option>
+                <option value="terciario">Terciario</option>
+              </select>
+            </div>
+            <div class="signup-form__field">
+              <label class="signup-form__label" for="rv-alumnos">Cantidad de alumnos</label>
+              <!-- select en vez de number: no tiene min/max, así que nunca queda inválido estando oculto -->
+              <select class="signup-form__select" id="rv-alumnos">
+                <option value="5-10">5 a 10</option>
+                <option value="11-20" selected>11 a 20</option>
+                <option value="21-30">21 a 30</option>
+                <option value="31-40">31 a 40</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset class="signup-form__group signup-form__group--company">
+            <legend class="signup-form__label">Datos de la empresa</legend>
+            <div class="signup-form__field">
+              <label class="signup-form__label" for="rv-empresa">Nombre de la empresa</label>
+              <input class="signup-form__input" type="text" id="rv-empresa" autocomplete="organization">
+            </div>
+            <div class="signup-form__field">
+              <label class="signup-form__label" for="rv-contacto">Persona de contacto</label>
+              <input class="signup-form__input" type="text" id="rv-contacto">
+            </div>
+            <div class="signup-form__field">
+              <label class="signup-form__label" for="rv-personas">Cantidad de personas</label>
+              <select class="signup-form__select" id="rv-personas">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3-5">3 a 5</option>
+                <option value="6-10">6 a 10</option>
+              </select>
+            </div>
+            <div class="signup-form__field signup-form__field--inline">
+              <input class="signup-form__check" type="checkbox" id="rv-reclutadores">
+              <label class="signup-form__label" for="rv-reclutadores">Queremos participar del espacio de reclutadores</label>
+            </div>
+          </fieldset>
+        </fieldset>
+
+        <!-- Campos comunes: siempre visibles, por eso sí pueden ser required -->
+        <div class="signup-form__field">
+          <label class="signup-form__label" for="rv-email">Email</label>
+          <input class="signup-form__input" type="email" id="rv-email" autocomplete="email" required>
+        </div>
+
+        <fieldset class="signup-form__options">
+          <legend class="signup-form__label">Turno</legend>
+          <!-- required en un radio = hay que elegir uno del grupo "turno" -->
+          <input class="signup-form__radio" type="radio" name="turno" value="manana" id="turno-manana" required>
+          <label class="signup-form__option" for="turno-manana">Mañana · 10 a 14 h</label>
+
+          <input class="signup-form__radio" type="radio" name="turno" value="tarde" id="turno-tarde" required>
+          <label class="signup-form__option" for="turno-tarde">Tarde · 14 a 18 h</label>
+        </fieldset>
+
+        <p class="signup-form__hint">Entrada libre y gratuita con reserva. Es una demo: los datos no se guardan.</p>
+
+        <button class="signup-form__submit" type="submit">Reservar mi entrada</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL: reserva confirmada ===================== -->
+  <div class="modal" id="reserva-confirmada" role="dialog" aria-modal="true" aria-labelledby="reserva-confirmada-title">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <!-- Cierra y lleva a #info-entrada (que además queda resaltada por .event-info__item:target) -->
+      <a class="modal__close" href="#info-entrada" aria-label="Cerrar">✕</a>
+
+      <!-- ===================== BLOQUE: ticket ===================== -->
+      <!-- Las muescas de los costados se hacen con radial-gradient en el fondo (ver CSS) -->
+      <div class="ticket">
+        <p class="ticket__event">Feria de proyectos DevX</p>
+        <h2 class="ticket__title" id="reserva-confirmada-title">¡Tu lugar está reservado!</h2>
+        <p class="ticket__info">Sábado 14 de noviembre · UTN Facultad Regional Mendoza · Laboratorio de Java · Coronel Rodríguez 273</p>
+        <p class="ticket__note">Presentá esta pantalla en la entrada</p>
+      </div>
     </div>
   </div>
 

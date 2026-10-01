@@ -1,0 +1,724 @@
+/* ==========================================================================
+   DevX — Feria de proyectos | Estilos Principales (styles.css)
+   Materia: Programación III - UTN FRM
+   Metodología: BEM (Block Element Modifier)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. RESET Y VARIABLES GLOBALES
+   -------------------------------------------------------------------------- */
+:root {
+  --color-primary: #6b21a8;        /* Morado principal (tema Udema) */
+  --color-primary-light: #9333ea;  /* Morado claro / hover */
+  --color-primary-dark: #581c87;   /* Morado oscuro */
+  --color-accent: #f59e0b;         /* Ámbar para estrellas y destacados */
+  --color-bg: #f8fafc;             /* Fondo gris suave */
+  --color-surface: #ffffff;        /* Fondo blanco de tarjetas */
+  --color-text: #1e293b;           /* Texto oscuro */
+  --color-text-muted: #64748b;     /* Texto secundario */
+  --color-border: #e2e8f0;         /* Bordes sutiles */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  --radius: 8px;
+  --transition: 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;              /* Evita desbordamiento horizontal */
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   1. BLOQUE: page-header
+   Requisitos:
+   - position: sticky con z-index: 10
+   - display: inline-block en links
+   - Menú accesible sin JS (:checked + ~)
+   -------------------------------------------------------------------------- */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;                     /* Encima del contenido y títulos sticky */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.page-header__logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+/* Checkbox accesible: NO se oculta con display:none para no romper la navegación con Tab */
+.page-header__checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Foco visible en el botón ☰ cuando se tabula con teclado */
+.page-header__checkbox:focus ~ .page-header__toggle {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* Botón ☰: display:none en PC, visible en móvil */
+.page-header__toggle {
+  display: none;
+  font-size: 1.75rem;
+  color: var(--color-text);
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+}
+
+.page-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* REQUISITO TP: display: inline-block en navegación */
+.page-header__link {
+  display: inline-block;
+  padding: 8px 16px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.page-header__link:hover {
+  color: var(--color-primary);
+  background-color: #f3e8ff;
+}
+
+.page-header__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Modificador BEM: link activo */
+.page-header__link--active {
+  color: var(--color-primary);
+  background-color: #f3e8ff;
+  font-weight: 700;
+}
+
+.page-header__button {
+  display: inline-block;
+  padding: 9px 18px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: var(--radius);
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.page-header__button:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-1px);
+}
+
+.page-header__button:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   2. BLOQUE: hero
+   Requisitos:
+   - display: block para organización vertical
+   - :focus visible en input de búsqueda
+   -------------------------------------------------------------------------- */
+.hero {
+  display: block;                  /* REQUISITO TP: display: block para zona vertical */
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #581c87 0%, #7e22ce 100%);
+  color: #ffffff;
+}
+
+.hero__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.hero__subtitle {
+  font-size: 1.15rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 32px auto;
+}
+
+.hero__search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.hero__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* REQUISITO TP: :focus en campo de control con indicador visual claro */
+.hero__input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 18px;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  outline: none;
+  background-color: #ffffff;
+  color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.hero__input:focus {
+  border-color: #d8b4fe;
+  box-shadow: 0 0 0 4px rgba(216, 180, 254, 0.45);
+}
+
+.hero__button {
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--color-accent);
+  color: #1e293b;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.hero__button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.hero__button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   3. BLOQUE: features
+   Requisitos:
+   - display: inline-block en ítems
+   - :nth-child(2) para destacar el elemento del medio
+   -------------------------------------------------------------------------- */
+.features {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.features__heading {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 24px;
+}
+
+.features__image {
+  display: block;                  /* REQUISITO TP: display: block en imagen */
+  width: 100%;
+  max-width: 650px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin: 0 auto 36px auto;
+  box-shadow: var(--shadow-md);
+}
+
+.features__list {
+  list-style: none;
+  text-align: center;
+}
+
+/* REQUISITO TP: display: inline-block para alinear horizontalmente */
+.features__item {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(33.333% - 24px);
+  margin: 10px;
+  padding: 24px 18px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.features__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* REQUISITO TP: :nth-child(2) para alternar o destacar */
+.features__item:nth-child(2) {
+  border-top: 4px solid var(--color-primary);
+  background-color: #faf5ff;
+}
+
+.features__icon {
+  display: block;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.features__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.features__text {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   4. BLOQUE: project-list
+   Requisitos:
+   - position: sticky en título con z-index: 2
+   - Grilla con Flexbox (3 tarjetas por fila)
+   -------------------------------------------------------------------------- */
+.project-list {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+/* REQUISITO TP: position: sticky en título de sección */
+.project-list__title {
+  position: sticky;
+  top: 65px;                       /* Se clava justo debajo del header */
+  z-index: 2;                      /* Pasa por encima de las tarjetas */
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  background-color: var(--color-bg);
+  padding: 16px 0;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e9d5ff;
+}
+
+/* REQUISITO TP: Grilla con Flexbox */
+.project-list__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   5. BLOQUE: project-card
+   Requisitos:
+   - flex: 1 1 calc(33.333% - 16px) (3 por fila)
+   - opacity: 0.85 en normales, 1 en hover y focus-within
+   - position: relative en contenedor media
+   - position: absolute en badge
+   - visibility: hidden en label normal, visible en destacada
+   - Selector descendente y combinador hijo directo (>)
+   - :nth-child(even) para alternar
+   -------------------------------------------------------------------------- */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(33.333% - 16px);
+  min-width: 260px;
+  max-width: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  /* REQUISITO TP: opacity en estado visual */
+  opacity: 0.85;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  opacity: 1;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* REQUISITO TP: :nth-child(even) para alternar estilo */
+.project-card:nth-child(even) {
+  border-left: 3px solid #c084fc;
+}
+
+/* Modificador BEM: Tarjeta destacada */
+.project-card--featured {
+  opacity: 1;
+  border: 2px solid var(--color-primary);
+  background-color: #fbf8ff;
+  box-shadow: 0 4px 12px rgba(107, 33, 168, 0.15);
+}
+
+.project-card__category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+/* REQUISITO TP: Combinador hijo directo (>) */
+.project-card > .project-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.project-card__text {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+/* REQUISITO TP: position: relative como contenedor de referencia */
+.project-card__media {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background-color: #e2e8f0;
+}
+
+.project-card__image {
+  display: block;                  /* REQUISITO TP: display: block en imagen */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-card__image {
+  transform: scale(1.05);
+}
+
+/* REQUISITO TP: position: absolute para badge superpuesto */
+.project-card__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(30, 41, 59, 0.85);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.project-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;                 /* Evita desborde en pantallas muy angostas */
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* REQUISITO TP: display: inline-block en rating y label */
+.project-card__rating {
+  display: inline-block;
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+.project-card__favorite {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.project-card__favorite:hover {
+  color: #e11d48;
+  border-color: #e11d48;
+}
+
+.project-card__favorite--active {
+  color: #e11d48;
+  border-color: #e11d48;
+  background-color: #ffe4e6;
+}
+
+/* REQUISITO TP: visibility: hidden
+   En tarjetas normales no se ve pero conserva su espacio físico para mantener alineados los footers */
+.project-card__label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #b45309;
+  background-color: #fef3c7;
+  padding: 3px 8px;
+  border-radius: 4px;
+  visibility: hidden;
+}
+
+/* REQUISITO TP: Selector descendente
+   En la tarjeta destacada el label pasa a visible */
+.project-card--featured .project-card__label {
+  visibility: visible;
+}
+
+/* REQUISITO TP: Combinador hijo directo (>) en botón */
+.project-card__footer > .project-card__button {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: #f3e8ff;
+  border: 1px solid #d8b4fe;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.project-card__footer > .project-card__button:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.project-card__footer > .project-card__button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+/* Modificador BEM: botón destacado (Resuelto por especificidad pura SIN !important) */
+.project-card__footer > .project-card__button.project-card__button--primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+.project-card__footer > .project-card__button.project-card__button--primary:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* --------------------------------------------------------------------------
+   6. BLOQUE: modal (Superposición y estado oculto sin JS)
+   Requisitos:
+   - display: none cuando está cerrado
+   - position: fixed con z-index: 100
+   - Apertura con :target y cierre con #cerrar
+   -------------------------------------------------------------------------- */
+.modal {
+  /* REQUISITO TP: display: none desaparece sin conservar espacio */
+  display: none;
+  position: fixed;                 /* REQUISITO TP: position: fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;                    /* REQUISITO TP: z-index superior */
+}
+
+/* Al apuntar la URL al ID del modal (ej: #modal-safenet), :target lo activa */
+.modal:target {
+  display: block;                  /* Se abre sin JavaScript */
+}
+
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(3px);
+}
+
+.modal__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 520px;
+  background-color: var(--color-surface);
+  padding: 32px 28px;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  z-index: 101;
+}
+
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.modal__close:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.modal__close:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+.modal__title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+}
+
+.modal__text {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   7. MEDIA QUERIES (Responsive - max-width: 767px)
+   Requisitos:
+   - Menú ☰ visible y desplegable
+   - Elementos apilados verticalmente
+   - Tarjetas al 100% de ancho
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .page-header__toggle {
+    display: block;
+  }
+
+  .page-header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-surface);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    gap: 12px;
+  }
+
+  /* TRUCO SIN JS: :checked activa el nav hermano (~) */
+  .page-header__checkbox:checked ~ .page-header__nav {
+    display: flex;
+  }
+
+  .page-header__link {
+    display: block;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .page-header__button {
+    display: none;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__search {
+    flex-direction: column;
+  }
+
+  .hero__input,
+  .hero__button {
+    width: 100%;
+  }
+
+  .features__item {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  .project-list__title {
+    top: 58px;
+  }
+
+  /* Tarjetas de proyectos ocupan todo el ancho y no desbordan */
+  .project-card {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .project-card__footer {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+}

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DevX — Feria de proyectos</title>
   <link rel="stylesheet" href="css/styles.css">
-  <!-- <link rel="stylesheet" href="css/prueba.css"> -->
+  <link rel="stylesheet" href="css/prueba.css"> 
 </head>
 <body>
 
@@ -35,9 +35,12 @@
     <section class="hero" id="inicio">
       <h1 class="hero__title">Feria de proyectos DevX</h1>
       <p class="hero__subtitle">Sábado 14 de noviembre · Mendoza · Entrada libre y gratuita</p>
+      <p class="hero__location">📍 Universidad Tecnológica Nacional — Facultad Regional Mendoza · Laboratorio de Java</p>
 
       <!-- Buscador: acá se va a aplicar el :focus -->
-      <form class="hero__search" role="search">
+      <!-- action="#proyectos": al enviar, el navegador va a esa sección. El input no tiene name,
+           así que no se agrega ningún dato a la URL. NO filtra resultados (eso necesitaría JS o un servidor) -->
+      <form class="hero__search" role="search" action="#proyectos">
         <label class="hero__label" for="buscar">Buscar proyecto</label>
         <input class="hero__input" type="text" id="buscar" placeholder="Ej: seguridad, IA, videojuegos...">
         <button class="hero__button" type="submit">Buscar</button>
@@ -51,23 +54,30 @@
   <!-- Imagen ilustrativa de la sección (decorativa) -->
   <img class="features__image" src="img/quevasaencontrar.jpg" alt="">
 
+  <!-- Cada tarjeta es un link que salta a su descripción en .event-info -->
   <ul class="features__list">
     <li class="features__item">
-      <span class="features__icon" aria-hidden="true">🎟️</span>
-      <h3 class="features__title">Entrada gratuita</h3>
-      <p class="features__text">Vení a mostrar tu proyecto o a conocer el de otros.</p>
+      <a class="features__link" href="#info-entrada">
+        <span class="features__icon" aria-hidden="true">🎟️</span>
+        <h3 class="features__title">Entrada gratuita</h3>
+        <p class="features__text">Vení a mostrar tu proyecto o a conocer el de otros.</p>
+      </a>
     </li>
 
     <li class="features__item">
-      <span class="features__icon" aria-hidden="true">💼</span>
-      <h3 class="features__title">Reclutadores</h3>
-      <p class="features__text">Empresas IT de la región buscando nuevos talentos.</p>
+      <a class="features__link" href="#info-reclutadores">
+        <span class="features__icon" aria-hidden="true">💼</span>
+        <h3 class="features__title">Reclutadores</h3>
+        <p class="features__text">Empresas IT de la región buscando nuevos talentos.</p>
+      </a>
     </li>
 
     <li class="features__item">
-      <span class="features__icon" aria-hidden="true">🏫</span>
-      <h3 class="features__title">Escuelas</h3>
-      <p class="features__text">Información para instituciones educativas que quieran participar.</p>
+      <a class="features__link" href="#info-escuelas">
+        <span class="features__icon" aria-hidden="true">🏫</span>
+        <h3 class="features__title">Escuelas</h3>
+        <p class="features__text">Información para instituciones educativas que quieran participar.</p>
+      </a>
     </li>
   </ul>
 </section>
@@ -93,7 +103,13 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
-            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <!-- Corazón sin JS: el checkbox guarda el estado (marcado/desmarcado) y el label
+                 es el corazón que se ve. El input va JUSTO antes del label para usar el combinador + -->
+            <input type="checkbox" class="project-card__favorite-input" id="fav-safenet" aria-label="Marcar SafeNet como favorito">
+            <label class="project-card__favorite" for="fav-safenet" aria-label="Marcar como favorito">
+              <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
+              <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
+            </label>
             <span class="project-card__label">⭐ Destacado</span>
             <a class="project-card__button" href="#modal-safenet">Ver detalle</a>
           </footer>
@@ -112,7 +128,12 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
-            <button class="project-card__favorite project-card__favorite--active" type="button" aria-label="Quitar de destacados" aria-pressed="true">♥</button>
+            <!-- MentorIA arranca marcada: el atributo checked reemplaza al viejo modificador --active -->
+            <input type="checkbox" class="project-card__favorite-input" id="fav-mentoria" aria-label="Marcar MentorIA como favorito" checked>
+            <label class="project-card__favorite" for="fav-mentoria" aria-label="Marcar como favorito">
+              <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
+              <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
+            </label>
             <span class="project-card__label">⭐ Destacado</span>
             <!-- Link a #modal-mentoria: al hacer clic, la URL termina en #modal-mentoria y .modal:target lo muestra -->
             <a class="project-card__button project-card__button--primary" href="#modal-mentoria">Ver detalle</a>
@@ -132,7 +153,11 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
-            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <input type="checkbox" class="project-card__favorite-input" id="fav-pixelquest" aria-label="Marcar PixelQuest como favorito">
+            <label class="project-card__favorite" for="fav-pixelquest" aria-label="Marcar como favorito">
+              <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
+              <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
+            </label>
             <span class="project-card__label">⭐ Destacado</span>
             <a class="project-card__button" href="#modal-pixelquest">Ver detalle</a>
           </footer>
@@ -151,7 +176,11 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="3 de 5 estrellas">★★★☆☆</span>
-            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <input type="checkbox" class="project-card__favorite-input" id="fav-chainvote" aria-label="Marcar ChainVote como favorito">
+            <label class="project-card__favorite" for="fav-chainvote" aria-label="Marcar como favorito">
+              <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
+              <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
+            </label>
             <span class="project-card__label">⭐ Destacado</span>
             <a class="project-card__button" href="#modal-chainvote">Ver detalle</a>
           </footer>
@@ -170,7 +199,11 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
-            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <input type="checkbox" class="project-card__favorite-input" id="fav-ecoruta" aria-label="Marcar EcoRuta como favorito">
+            <label class="project-card__favorite" for="fav-ecoruta" aria-label="Marcar como favorito">
+              <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
+              <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
+            </label>
             <span class="project-card__label">⭐ Destacado</span>
             <a class="project-card__button" href="#modal-ecoruta">Ver detalle</a>
           </footer>
@@ -189,13 +222,43 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
-            <button class="project-card__favorite" type="button" aria-label="Marcar como destacado" aria-pressed="false">♡</button>
+            <input type="checkbox" class="project-card__favorite-input" id="fav-agrosense" aria-label="Marcar AgroSense como favorito">
+            <label class="project-card__favorite" for="fav-agrosense" aria-label="Marcar como favorito">
+              <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
+              <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
+            </label>
             <span class="project-card__label">⭐ Destacado</span>
             <a class="project-card__button" href="#modal-agrosense">Ver detalle</a>
           </footer>
         </article>
 
       </div>
+    </section>
+
+    <!-- ===================== BLOQUE: event-info ===================== -->
+    <!-- Destino de los links de .features: cada article tiene el id al que apunta su tarjeta
+         y .event-info__item:target lo resalta al llegar -->
+    <section class="event-info" aria-labelledby="event-info-title">
+      <h2 class="event-info__title" id="event-info-title">Más información</h2>
+
+      <article class="event-info__item event-info__item--tickets" id="info-entrada">
+        <h3 class="event-info__heading">🎟️ Entrada libre con reserva</h3>
+        <p class="event-info__text">La entrada es libre y gratuita para todo público. Como el cupo del salón es limitado, te pedimos que reserves tu lugar en la mesa de informes o con tu docente antes del jueves 12 de noviembre.</p>
+        <p class="event-info__text">La feria se realiza en el Laboratorio de Java de la UTN Facultad Regional Mendoza (Coronel Rodríguez 273, Ciudad de Mendoza), de 10 a 18 h. Podés ir y venir durante todo el día.</p>
+      </article>
+
+      <article class="event-info__item event-info__item--recruiters" id="info-reclutadores">
+        <h3 class="event-info__heading">💼 Empresas que buscan talento</h3>
+        <p class="event-info__text">Empresas de software y consultoras IT de Mendoza recorren los stands para conocer a estudiantes con ganas de hacer pasantías o su primer trabajo en tecnología.</p>
+        <p class="event-info__text">Traé tu CV impreso o un código QR a tu perfil y a tu repositorio: es la mejor forma de que se acuerden de vos.</p>
+      </article>
+
+      <article class="event-info__item event-info__item--schools" id="info-escuelas">
+        <h3 class="event-info__heading">🏫 Escuelas que quieran participar</h3>
+        <p class="event-info__text">Las escuelas secundarias pueden visitar la feria con sus cursos o presentar un proyecto propio en un stand. Solo tienen que inscribirse con un docente responsable antes del 31 de octubre.</p>
+      </article>
+
+      <a class="event-info__back" href="#inicio">↑ Volver al inicio</a>
     </section>
 
   </main>

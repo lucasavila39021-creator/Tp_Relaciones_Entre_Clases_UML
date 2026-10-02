@@ -1,25 +1,25 @@
 /* ==========================================================================
-   DevX — Feria de proyectos | Estilos Principales (styles.css)
+   DevX — Feria de proyectos | Estilos Principales (styles.css - Dark Mode)
    Materia: Programación III - UTN FRM
    Metodología: BEM (Block Element Modifier)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   0. RESET Y VARIABLES GLOBALES
+   0. RESET Y VARIABLES GLOBALES (MODO OSCURO)
    -------------------------------------------------------------------------- */
 :root {
-  --color-primary: #6b21a8;        /* Morado principal (tema Udema) */
-  --color-primary-light: #9333ea;  /* Morado claro / hover */
-  --color-primary-dark: #581c87;   /* Morado oscuro */
-  --color-accent: #f59e0b;         /* Ámbar para estrellas y destacados */
-  --color-bg: #f8fafc;             /* Fondo gris suave */
-  --color-surface: #ffffff;        /* Fondo blanco de tarjetas */
-  --color-text: #1e293b;           /* Texto oscuro */
-  --color-text-muted: #64748b;     /* Texto secundario */
-  --color-border: #e2e8f0;         /* Bordes sutiles */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  --color-primary: #a855f7;        /* Violeta brillante y accesible en modo oscuro */
+  --color-primary-light: #c084fc;  /* Violeta claro / hover */
+  --color-primary-dark: #9333ea;   /* Violeta medio */
+  --color-accent: #fbbf24;         /* Ámbar brillante para estrellas y destacados */
+  --color-bg: #0f172a;             /* Fondo general profundo (Slate 900) */
+  --color-surface: #1e293b;        /* Fondo de tarjetas y modales (Slate 800) */
+  --color-text: #f1f5f9;           /* Texto principal claro y legible (Slate 100) */
+  --color-text-muted: #94a3b8;     /* Texto secundario suave (Slate 400) */
+  --color-border: #334155;         /* Bordes sutiles y elegantes (Slate 700) */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
   --radius: 8px;
   --transition: 0.25s ease;
   --header-height: 71px;           /* Alto real del header sticky en PC (65px en celular) */
@@ -42,6 +42,7 @@ html {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--color-text);
   background-color: var(--color-bg);
+  background-attachment: fixed;
   line-height: 1.5;
 }
 
@@ -95,7 +96,7 @@ html {
 .page-header__logo {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   text-decoration: none;
   letter-spacing: -0.5px;
 }
@@ -169,8 +170,8 @@ html {
 }
 
 .page-header__link:hover {
-  color: var(--color-primary);
-  background-color: #f3e8ff;
+  color: var(--color-primary-light);
+  background-color: rgba(168, 85, 247, 0.15);
 }
 
 .page-header__link:focus-visible {
@@ -180,8 +181,8 @@ html {
 
 /* Modificador BEM: link activo */
 .page-header__link--active {
-  color: var(--color-primary);
-  background-color: #f3e8ff;
+  color: var(--color-primary-light);
+  background-color: rgba(168, 85, 247, 0.2);
   font-weight: 700;
 }
 
@@ -217,7 +218,7 @@ html {
   scroll-margin-top: var(--header-height); /* Al saltar a #inicio, el header no lo tapa */
   text-align: center;
   padding: 60px 20px;
-  background: linear-gradient(135deg, #581c87 0%, #7e22ce 100%);
+  background: linear-gradient(135deg, #1e1b4b 0%, #3b0764 100%);
   color: #ffffff;
 }
 
@@ -239,7 +240,7 @@ html {
 .hero__location {
   font-size: 0.95rem;
   color: #ffffff;
-  opacity: 0.8;
+  opacity: 0.85;
   max-width: 600px;
   margin: 0 auto 24px auto;        /* Espacio antes del botón "Reservá tu entrada" */
 }
@@ -251,7 +252,7 @@ html {
   padding: 12px 22px;
   font-size: 1rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #0f172a;
   background-color: var(--color-accent);
   text-decoration: none;
   border-radius: var(--radius);
@@ -294,17 +295,17 @@ html {
   min-width: 0;
   padding: 12px 18px;
   font-size: 1rem;
-  border: 2px solid transparent;
+  border: 2px solid var(--color-border);
   border-radius: var(--radius);
   outline: none;
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   color: var(--color-text);
   transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .hero__input:focus {
-  border-color: #d8b4fe;
-  box-shadow: 0 0 0 4px rgba(216, 180, 254, 0.45);
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.3);
 }
 
 .hero__button {
@@ -312,7 +313,7 @@ html {
   font-size: 1rem;
   font-weight: 600;
   background-color: var(--color-accent);
-  color: #1e293b;
+  color: #0f172a;
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
@@ -347,7 +348,7 @@ html {
 .features__heading {
   font-size: 1.85rem;
   font-weight: 700;
-  color: var(--color-primary-dark);
+  color: var(--color-primary-light);
   margin-bottom: 24px;
 }
 
@@ -360,6 +361,7 @@ html {
   border-radius: var(--radius);
   margin: 0 auto 36px auto;
   box-shadow: var(--shadow-md);
+  opacity: 0.9;
 }
 
 .features__list {
@@ -384,12 +386,13 @@ html {
 .features__item:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
 }
 
 /* REQUISITO TP: :nth-child(2) para alternar o destacar */
 .features__item:nth-child(2) {
   border-top: 4px solid var(--color-primary);
-  background-color: #faf5ff;
+  background-color: #161e2e;
 }
 
 /* El link ocupa toda la tarjeta: el padding vive acá para que todo el área sea clickeable */
@@ -445,13 +448,13 @@ html {
   z-index: 2;                      /* Pasa por encima de las tarjetas */
   font-size: 1.85rem;
   font-weight: 800;
-  color: var(--color-primary-dark);
+  color: var(--color-primary-light);
   background-color: var(--color-bg);
   padding: 16px 0;
   margin-bottom: 24px;
-  border-bottom: 2px solid #e9d5ff;
+  border-bottom: 2px solid var(--color-border);
   /* Sombra para que, al scrollear, se note que el título (z-index 2) queda delante de las tarjetas */
-  box-shadow: 0 12px 10px -10px rgba(30, 41, 59, 0.35);
+  box-shadow: 0 12px 10px -10px rgba(0, 0, 0, 0.5);
 }
 
 /* REQUISITO TP: Grilla con Flexbox */
@@ -497,11 +500,12 @@ html {
   opacity: 1;
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
 }
 
 /* REQUISITO TP: :nth-child(even) para alternar estilo */
 .project-card:nth-child(even) {
-  border-left: 3px solid #c084fc;
+  border-left: 3px solid var(--color-primary-light);
 }
 
 /* Destacado: lo prende el corazón. MentorIA trae project-card--featured
@@ -511,8 +515,8 @@ html {
 .project-card:has(.project-card__favorite-input:checked) {
   opacity: 1;
   border: 2px solid var(--color-primary);
-  background-color: #fbf8ff;
-  box-shadow: 0 4px 12px rgba(107, 33, 168, 0.15);
+  background-color: #161e2e;
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.25);
 }
 
 .project-card__category {
@@ -520,7 +524,7 @@ html {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   margin-bottom: 4px;
 }
 
@@ -547,7 +551,7 @@ html {
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 16px;
-  background-color: #e2e8f0;
+  background-color: #0b1120;
 }
 
 .project-card__image {
@@ -556,10 +560,12 @@ html {
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+  opacity: 0.9;
 }
 
 .project-card:hover .project-card__image {
   transform: scale(1.05);
+  opacity: 1;
 }
 
 /* REQUISITO TP: position: absolute para badge superpuesto.
@@ -571,13 +577,14 @@ html {
   z-index: 1;
   top: 10px;
   right: 10px;
-  background-color: rgba(30, 41, 59, 0.85);
-  color: #ffffff;
+  background-color: rgba(15, 23, 42, 0.85);
+  color: #f1f5f9;
   font-size: 0.75rem;
   font-weight: 600;
   padding: 4px 8px;
   border-radius: 4px;
   backdrop-filter: blur(4px);
+  border: 1px solid var(--color-border);
 }
 
 .project-card__footer {
@@ -610,12 +617,13 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color var(--transition), border-color var(--transition);
+  transition: color var(--transition), border-color var(--transition), background-color var(--transition);
 }
 
 .project-card__favorite:hover {
-  color: #e11d48;
-  border-color: #e11d48;
+  color: #fb7185;
+  border-color: #fb7185;
+  background-color: rgba(251, 113, 133, 0.1);
 }
 
 /* Checkbox del corazón: oculto igual que .page-header__checkbox.
@@ -635,9 +643,9 @@ html {
 
 /* TRUCO SIN JS: input:checked + label (el label es el hermano inmediato del input) */
 .project-card__favorite-input:checked + .project-card__favorite {
-  color: #e11d48;
-  border-color: #e11d48;
-  background-color: #ffe4e6;
+  color: #fb7185;
+  border-color: #fb7185;
+  background-color: rgba(251, 113, 133, 0.2);
 }
 
 .project-card__favorite-input:checked + .project-card__favorite .project-card__heart--empty {
@@ -650,7 +658,7 @@ html {
 
 /* Foco visible en el corazón cuando se llega con Tab */
 .project-card__favorite-input:focus-visible + .project-card__favorite {
-  outline: 2px solid #e11d48;
+  outline: 2px solid #fb7185;
   outline-offset: 2px;
 }
 
@@ -660,8 +668,9 @@ html {
   display: inline-block;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #b45309;
-  background-color: #fef3c7;
+  color: #fcd34d;
+  background-color: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
   padding: 3px 8px;
   border-radius: 4px;
   visibility: hidden;
@@ -681,17 +690,18 @@ html {
   padding: 6px 12px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-primary);
-  background-color: #f3e8ff;
-  border: 1px solid #d8b4fe;
+  color: var(--color-primary-light);
+  background-color: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(192, 132, 252, 0.3);
   border-radius: var(--radius);
   text-decoration: none;
-  transition: background-color var(--transition), color var(--transition);
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
 }
 
 .project-card__footer > .project-card__button:hover {
   background-color: var(--color-primary);
   color: #ffffff;
+  border-color: var(--color-primary);
 }
 
 .project-card__footer > .project-card__button:focus-visible {
@@ -728,7 +738,7 @@ html {
 .event-info__title {
   font-size: 1.85rem;
   font-weight: 800;
-  color: var(--color-primary-dark);
+  color: var(--color-primary-light);
   margin-bottom: 24px;
 }
 
@@ -755,13 +765,13 @@ html {
 }
 
 .event-info__item--schools {
-  border-left-color: #16a34a;
+  border-left-color: #22c55e;
 }
 
 /* La descripción a la que saltaste queda resaltada (sin pisar el color del modificador) */
 .event-info__item:target {
-  background-color: #faf5ff;
-  box-shadow: 0 0 0 3px #d8b4fe, var(--shadow-md);
+  background-color: #161e2e;
+  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.4), var(--shadow-md);
 }
 
 .event-info__heading {
@@ -786,14 +796,14 @@ html {
   margin-top: 8px;
   padding: 8px 16px;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   text-decoration: none;
   border-radius: var(--radius);
   transition: background-color var(--transition);
 }
 
 .event-info__back:hover {
-  background-color: #f3e8ff;
+  background-color: rgba(168, 85, 247, 0.15);
 }
 
 .event-info__back:focus-visible {
@@ -804,12 +814,12 @@ html {
 /* Link al formulario de inscripción dentro de una descripción */
 .event-info__link {
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   text-underline-offset: 3px;
 }
 
 .event-info__link:hover {
-  color: var(--color-primary-light);
+  color: var(--color-primary);
 }
 
 .event-info__link:focus-visible {
@@ -853,8 +863,8 @@ html:has(.modal:target) {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(3px);
+  background-color: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(4px);
   text-decoration: none;           /* Es un enlace a #cerrar: clic afuera cierra, sin entrar al Tab */
 }
 
@@ -866,10 +876,11 @@ html:has(.modal:target) {
   width: 90%;
   max-width: 520px;
   background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   padding: 32px 28px;
   border-radius: 12px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-  z-index: 101;                    /* Delante del overlay: el texto y la ✕ reciben el clic */}
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  z-index: 101;                    /* Delante del overlay: el texto y la ✕ reciben el clic */
   /* Si el contenido es más alto que la pantalla (ej: el formulario en celular),
      el modal no se sale: scrollea por dentro */
   max-height: 90vh;
@@ -900,19 +911,19 @@ html:has(.modal:target) {
 }
 
 .modal__close:hover {
-  background-color: #fee2e2;
-  color: #dc2626;
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
 }
 
 .modal__close:focus-visible {
-  outline: 2px solid #dc2626;
+  outline: 2px solid #f87171;
   outline-offset: 2px;
 }
 
 .modal__title {
   font-size: 1.6rem;
   font-weight: 800;
-  color: var(--color-primary-dark);
+  color: var(--color-primary-light);
   margin-bottom: 12px;
 }
 
@@ -970,7 +981,7 @@ html:has(.modal:target) {
   font: inherit;
   font-size: 0.95rem;
   color: var(--color-text);
-  background-color: var(--color-surface);
+  background-color: var(--color-bg);
   border: 2px solid var(--color-border);
   border-radius: var(--radius);
   outline: none;
@@ -995,7 +1006,7 @@ html:has(.modal:target) {
 .signup-form__select:focus,
 .signup-form__textarea:focus {
   border-color: var(--color-primary-light);
-  box-shadow: 0 0 0 4px rgba(216, 180, 254, 0.45);
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.3);
 }
 
 .signup-form__check:focus-visible {
@@ -1008,18 +1019,18 @@ html:has(.modal:target) {
 .signup-form__input:user-invalid,
 .signup-form__select:user-invalid,
 .signup-form__textarea:user-invalid {
-  border-color: #dc2626;
-  background-color: #fef2f2;
+  border-color: #f87171;
+  background-color: rgba(239, 68, 68, 0.15);
 }
 
 .signup-form__input:user-invalid:focus,
 .signup-form__select:user-invalid:focus,
 .signup-form__textarea:user-invalid:focus {
-  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+  box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.25);
 }
 
 .signup-form__check:user-invalid {
-  outline: 2px solid #dc2626;
+  outline: 2px solid #f87171;
   outline-offset: 2px;
 }
 
@@ -1095,7 +1106,7 @@ html:has(.modal:target) {
   font-weight: 600;
   text-align: center;
   color: var(--color-text);
-  background-color: var(--color-surface);
+  background-color: var(--color-bg);
   border: 2px solid var(--color-border);
   border-radius: var(--radius);
   cursor: pointer;
@@ -1114,14 +1125,14 @@ html:has(.modal:target) {
 }
 
 .signup-form__radio:focus-visible + .signup-form__option {
-  outline: 2px solid var(--color-primary-dark);
+  outline: 2px solid var(--color-primary-light);
   outline-offset: 2px;
 }
 
 /* Turno sin elegir, después de intentar enviar */
 .signup-form__radio:user-invalid + .signup-form__option {
-  border-color: #dc2626;
-  background-color: #fef2f2;
+  border-color: #f87171;
+  background-color: rgba(239, 68, 68, 0.15);
 }
 
 /* Grupos condicionales: ocultos por defecto (fieldset sin borde) */
@@ -1136,7 +1147,7 @@ html:has(.modal:target) {
 
 .signup-form__group > legend {
   margin-bottom: 8px;
-  color: var(--color-primary-dark);
+  color: var(--color-primary-light);
 }
 
 .signup-form__group .signup-form__field + .signup-form__field {
@@ -1163,12 +1174,13 @@ html:has(.modal:target) {
   padding: 32px 36px;
   text-align: center;
   background:
-    radial-gradient(circle at 0 50%, transparent 14px, #f3e8ff 15px) left / 51% 100% no-repeat,
-    radial-gradient(circle at 100% 50%, transparent 14px, #f3e8ff 15px) right / 51% 100% no-repeat;
+    radial-gradient(circle at 0 50%, transparent 14px, #1e1b4b 15px) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 50%, transparent 14px, #1e1b4b 15px) right / 51% 100% no-repeat;
+  background-color: var(--color-surface);
   border-radius: 12px;
   outline: 2px dashed var(--color-primary-light);
   outline-offset: -20px;           /* El punteado queda adentro, lejos de las muescas */
-  filter: drop-shadow(0 4px 6px rgba(107, 33, 168, 0.15)); /* La sombra respeta las muescas */
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5)); /* La sombra respeta las muescas */
 }
 
 .ticket__event {
@@ -1176,30 +1188,30 @@ html:has(.modal:target) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   margin-bottom: 6px;
 }
 
 .ticket__title {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--color-primary-dark);
+  color: #ffffff;
   margin-bottom: 12px;
 }
 
 .ticket__info {
   font-size: 0.95rem;
-  color: var(--color-text);
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
 .ticket__note {
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 2px dashed #d8b4fe;
+  border-top: 2px dashed rgba(192, 132, 252, 0.4);
   font-size: 0.85rem;
   font-weight: 600;
-  color: #b45309;
+  color: #fcd34d;
 }
 
 /* --------------------------------------------------------------------------
@@ -1256,13 +1268,13 @@ html:has(.modal:target) {
     padding: 12px;
     text-align: center;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-primary-light);
     cursor: pointer;
     border-radius: var(--radius);
   }
 
   .page-header__close:hover {
-    background-color: #f3e8ff;
+    background-color: rgba(168, 85, 247, 0.15);
   }
 
   /* "Inscribí tu proyecto" sigue visible en celular, más compacto */

@@ -46,6 +46,33 @@ html {
 }
 
 /* --------------------------------------------------------------------------
+   0b. BLOQUE: skip-link
+   Navegación solo con teclado: el primer Tab muestra este enlace.
+   position: absolute para que, oculto, no empuje el header.
+   z-index: 20 queda delante del header (10) y detrás del modal (100).
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 20;
+  padding: 10px 16px;
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transform: translateY(-150%);
+}
+
+/* :focus (no solo :focus-visible): el indicador tiene que verse al tabular */
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
    1. BLOQUE: page-header
    Requisitos:
    - position: sticky con z-index: 10
@@ -86,6 +113,14 @@ html {
 .page-header__checkbox:focus ~ .page-header__toggle {
   outline: 2px solid var(--color-primary);
   outline-offset: 4px;
+}
+
+/* En PC el menú ya está a la vista: el checkbox no debe ocupar un lugar en el Tab.
+   display: none lo saca del orden de tabulador (opacity: 0 no lo hace). */
+@media (min-width: 768px) {
+  .page-header__checkbox {
+    display: none;
+  }
 }
 
 /* Botón ☰: display:none en PC, visible en móvil */

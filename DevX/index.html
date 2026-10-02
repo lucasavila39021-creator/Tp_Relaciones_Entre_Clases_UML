@@ -113,10 +113,10 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
-            <!-- Corazón sin JS: el checkbox guarda el estado (marcado/desmarcado) y el label
-                 es el corazón que se ve. El input va JUSTO antes del label para usar el combinador + -->
-            <input type="checkbox" class="project-card__favorite-input" id="fav-safenet" aria-label="Marcar SafeNet como favorito">
-            <label class="project-card__favorite" for="fav-safenet" aria-label="Marcar como favorito">
+            <!-- Corazón sin JS: el checkbox guarda el estado. Al tildarlo se ve ♥ y
+                 "Destacado" (el span viene después, así alcanza el combinador desde :checked). -->
+            <input type="checkbox" class="project-card__favorite-input" id="fav-safenet" aria-label="Marcar SafeNet como destacado">
+            <label class="project-card__favorite" for="fav-safenet" aria-label="Marcar como destacado">
               <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
               <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
             </label>
@@ -138,9 +138,9 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
-            <!-- MentorIA arranca marcada: el atributo checked reemplaza al viejo modificador --active -->
-            <input type="checkbox" class="project-card__favorite-input" id="fav-mentoria" aria-label="Marcar MentorIA como favorito" checked>
-            <label class="project-card__favorite" for="fav-mentoria" aria-label="Marcar como favorito">
+            <!-- MentorIA arranca destacada: checked + la clase project-card--featured -->
+            <input type="checkbox" class="project-card__favorite-input" id="fav-mentoria" aria-label="Marcar MentorIA como destacado" checked>
+            <label class="project-card__favorite" for="fav-mentoria" aria-label="Marcar como destacado">
               <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
               <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
             </label>
@@ -163,8 +163,8 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
-            <input type="checkbox" class="project-card__favorite-input" id="fav-pixelquest" aria-label="Marcar PixelQuest como favorito">
-            <label class="project-card__favorite" for="fav-pixelquest" aria-label="Marcar como favorito">
+            <input type="checkbox" class="project-card__favorite-input" id="fav-pixelquest" aria-label="Marcar PixelQuest como destacado">
+            <label class="project-card__favorite" for="fav-pixelquest" aria-label="Marcar como destacado">
               <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
               <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
             </label>
@@ -186,8 +186,8 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="3 de 5 estrellas">★★★☆☆</span>
-            <input type="checkbox" class="project-card__favorite-input" id="fav-chainvote" aria-label="Marcar ChainVote como favorito">
-            <label class="project-card__favorite" for="fav-chainvote" aria-label="Marcar como favorito">
+            <input type="checkbox" class="project-card__favorite-input" id="fav-chainvote" aria-label="Marcar ChainVote como destacado">
+            <label class="project-card__favorite" for="fav-chainvote" aria-label="Marcar como destacado">
               <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
               <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
             </label>
@@ -209,8 +209,8 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="4 de 5 estrellas">★★★★☆</span>
-            <input type="checkbox" class="project-card__favorite-input" id="fav-ecoruta" aria-label="Marcar EcoRuta como favorito">
-            <label class="project-card__favorite" for="fav-ecoruta" aria-label="Marcar como favorito">
+            <input type="checkbox" class="project-card__favorite-input" id="fav-ecoruta" aria-label="Marcar EcoRuta como destacado">
+            <label class="project-card__favorite" for="fav-ecoruta" aria-label="Marcar como destacado">
               <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
               <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
             </label>
@@ -232,8 +232,8 @@
 
           <footer class="project-card__footer">
             <span class="project-card__rating" aria-label="5 de 5 estrellas">★★★★★</span>
-            <input type="checkbox" class="project-card__favorite-input" id="fav-agrosense" aria-label="Marcar AgroSense como favorito">
-            <label class="project-card__favorite" for="fav-agrosense" aria-label="Marcar como favorito">
+            <input type="checkbox" class="project-card__favorite-input" id="fav-agrosense" aria-label="Marcar AgroSense como destacado">
+            <label class="project-card__favorite" for="fav-agrosense" aria-label="Marcar como destacado">
               <span class="project-card__heart project-card__heart--empty" aria-hidden="true">♡</span>
               <span class="project-card__heart project-card__heart--full" aria-hidden="true">♥</span>
             </label>

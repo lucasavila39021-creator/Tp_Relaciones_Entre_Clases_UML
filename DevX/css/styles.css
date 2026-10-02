@@ -504,8 +504,11 @@ html {
   border-left: 3px solid #c084fc;
 }
 
-/* Modificador BEM: Tarjeta destacada */
-.project-card--featured {
+/* Destacado: lo prende el corazón. MentorIA trae project-card--featured
+   (clase base + modificador) y el checkbox ya tildado. Cualquier otra
+   tarjeta se destaca al marcarla, y se apaga al desmarcarla. */
+.project-card--featured:has(.project-card__favorite-input:checked),
+.project-card:has(.project-card__favorite-input:checked) {
   opacity: 1;
   border: 2px solid var(--color-primary);
   background-color: #fbf8ff;
@@ -664,9 +667,11 @@ html {
   visibility: hidden;
 }
 
-/* REQUISITO TP: Selector descendente
-   En la tarjeta destacada el label pasa a visible */
-.project-card--featured .project-card__label {
+/* REQUISITO TP: selector descendente.
+   Al marcar el corazón, "Destacado" pasa a visible. Oculto sigue ocupando
+   su lugar (visibility: hidden) para que los botones no salten. */
+.project-card--featured:has(.project-card__favorite-input:checked) .project-card__label,
+.project-card:has(.project-card__favorite-input:checked) .project-card__label {
   visibility: visible;
 }
 
@@ -694,14 +699,17 @@ html {
   outline-offset: 1px;
 }
 
-/* Modificador BEM: botón destacado (Resuelto por especificidad pura SIN !important) */
-.project-card__footer > .project-card__button.project-card__button--primary {
+/* Modificador BEM: el botón primary se pinta solo mientras la tarjeta está destacada.
+   El :has cubre también a las demás tarjetas cuando se marca el corazón. */
+.project-card--featured:has(.project-card__favorite-input:checked) .project-card__footer > .project-card__button.project-card__button--primary,
+.project-card:has(.project-card__favorite-input:checked) .project-card__footer > .project-card__button {
   background-color: var(--color-primary);
   color: #ffffff;
   border-color: var(--color-primary);
 }
 
-.project-card__footer > .project-card__button.project-card__button--primary:hover {
+.project-card--featured:has(.project-card__favorite-input:checked) .project-card__footer > .project-card__button.project-card__button--primary:hover,
+.project-card:has(.project-card__favorite-input:checked) .project-card__footer > .project-card__button:hover {
   background-color: var(--color-primary-light);
 }
 

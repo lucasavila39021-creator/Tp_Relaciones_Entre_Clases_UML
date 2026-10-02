@@ -279,8 +279,8 @@
   <!-- Un modal por proyecto. Cada "Ver detalle" apunta al id de SU modal
        (ej: href="#modal-safenet") y .modal:target muestra solo ese. -->
 
-  <div class="modal" id="modal-safenet" role="dialog" aria-modal="true" aria-labelledby="modal-safenet-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="modal-safenet" role="dialog" aria-modal="true" aria-labelledby="modal-safenet-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <!-- href="#cerrar" saca el #modal-... de la URL → deja de ser :target → se oculta. Ningún elemento tiene ese id, así que la página no scrollea -->
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
@@ -289,8 +289,8 @@
     </div>
   </div>
 
-  <div class="modal" id="modal-mentoria" role="dialog" aria-modal="true" aria-labelledby="modal-mentoria-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="modal-mentoria" role="dialog" aria-modal="true" aria-labelledby="modal-mentoria-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="modal-mentoria-title">MentorIA</h2>
@@ -298,8 +298,8 @@
     </div>
   </div>
 
-  <div class="modal" id="modal-pixelquest" role="dialog" aria-modal="true" aria-labelledby="modal-pixelquest-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="modal-pixelquest" role="dialog" aria-modal="true" aria-labelledby="modal-pixelquest-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="modal-pixelquest-title">PixelQuest</h2>
@@ -307,8 +307,8 @@
     </div>
   </div>
 
-  <div class="modal" id="modal-chainvote" role="dialog" aria-modal="true" aria-labelledby="modal-chainvote-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="modal-chainvote" role="dialog" aria-modal="true" aria-labelledby="modal-chainvote-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="modal-chainvote-title">ChainVote</h2>
@@ -316,8 +316,8 @@
     </div>
   </div>
 
-  <div class="modal" id="modal-ecoruta" role="dialog" aria-modal="true" aria-labelledby="modal-ecoruta-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="modal-ecoruta" role="dialog" aria-modal="true" aria-labelledby="modal-ecoruta-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="modal-ecoruta-title">EcoRuta</h2>
@@ -325,8 +325,8 @@
     </div>
   </div>
 
-  <div class="modal" id="modal-agrosense" role="dialog" aria-modal="true" aria-labelledby="modal-agrosense-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="modal-agrosense" role="dialog" aria-modal="true" aria-labelledby="modal-agrosense-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="modal-agrosense-title">AgroSense</h2>
@@ -336,8 +336,8 @@
 
   <!-- ===================== MODAL: inscripción ===================== -->
   <!-- Mismo bloque modal. modal__content--wide lo hace más ancho para que entren 2 campos por fila -->
-  <div class="modal" id="inscripcion" role="dialog" aria-modal="true" aria-labelledby="inscripcion-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="inscripcion" role="dialog" aria-modal="true" aria-labelledby="inscripcion-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content modal__content--wide">
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="inscripcion-title">Inscribite a DevX</h2>
@@ -403,8 +403,8 @@
 
   <!-- ===================== MODAL: inscripción enviada ===================== -->
   <!-- Destino del action del formulario: se muestra con .modal:target -->
-  <div class="modal" id="inscripcion-enviada" role="dialog" aria-modal="true" aria-labelledby="inscripcion-enviada-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="inscripcion-enviada" role="dialog" aria-modal="true" aria-labelledby="inscripcion-enviada-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <!-- Cierra y lleva a #proyectos: el modal deja de ser :target y la página scrollea hasta ese id -->
       <a class="modal__close" href="#proyectos" aria-label="Cerrar">✕</a>
@@ -414,8 +414,8 @@
   </div>
 
   <!-- ===================== MODAL: reserva de entrada ===================== -->
-  <div class="modal" id="reserva" role="dialog" aria-modal="true" aria-labelledby="reserva-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="reserva" role="dialog" aria-modal="true" aria-labelledby="reserva-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <a class="modal__close" href="#cerrar" aria-label="Cerrar">✕</a>
       <h2 class="modal__title" id="reserva-title">Reservá tu entrada</h2>
@@ -530,8 +530,8 @@
   </div>
 
   <!-- ===================== MODAL: reserva confirmada ===================== -->
-  <div class="modal" id="reserva-confirmada" role="dialog" aria-modal="true" aria-labelledby="reserva-confirmada-title">
-    <div class="modal__overlay"></div>
+  <div class="modal" tabindex="-1" id="reserva-confirmada" role="dialog" aria-modal="true" aria-labelledby="reserva-confirmada-title">
+    <a class="modal__overlay" href="#cerrar" tabindex="-1" aria-label="Cerrar"></a>
     <div class="modal__content">
       <!-- Cierra y lleva a #info-entrada (que además queda resaltada por .event-info__item:target) -->
       <a class="modal__close" href="#info-entrada" aria-label="Cerrar">✕</a>

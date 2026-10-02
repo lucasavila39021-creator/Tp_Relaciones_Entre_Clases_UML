@@ -792,12 +792,18 @@ html {
 .modal {
   /* REQUISITO TP: display: none desaparece sin conservar espacio */
   display: none;
-  position: fixed;                 /* REQUISITO TP: position: fixed */
+  position: fixed;                 /* REQUISITO TP: position: fixed. Cubre el viewport aunque la página esté scrolleada. */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100;                    /* REQUISITO TP: z-index superior */
+  z-index: 100;                    /* Delante del header (10) y del título sticky (2) */
+  outline: none;
+}
+
+/* El panel abierto tapa el header: sin esto, la página de atrás sigue scrolleando */
+html:has(.modal:target) {
+  overflow: hidden;
 }
 
 /* Al apuntar la URL al ID del modal (ej: #modal-safenet), :target lo activa */
@@ -813,6 +819,7 @@ html {
   height: 100%;
   background-color: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(3px);
+  text-decoration: none;           /* Es un enlace a #cerrar: clic afuera cierra, sin entrar al Tab */
 }
 
 .modal__content {
@@ -826,7 +833,7 @@ html {
   padding: 32px 28px;
   border-radius: 12px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-  z-index: 101;
+  z-index: 101;                    /* Delante del overlay: el texto y la ✕ reciben el clic */}
   /* Si el contenido es más alto que la pantalla (ej: el formulario en celular),
      el modal no se sale: scrollea por dentro */
   max-height: 90vh;

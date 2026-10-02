@@ -133,6 +133,24 @@ html {
   line-height: 1;
 }
 
+/* Abierto muestra ✕; cerrado muestra ☰. El checkbox sigue siendo el que guarda el estado. */
+.page-header__toggle-icon--close {
+  display: none;
+}
+
+.page-header__checkbox:checked ~ .page-header__toggle .page-header__toggle-icon--open {
+  display: none;
+}
+
+.page-header__checkbox:checked ~ .page-header__toggle .page-header__toggle-icon--close {
+  display: inline;
+}
+
+/* En PC no se muestra: el menú ya está desplegado */
+.page-header__close {
+  display: none;
+}
+
 .page-header__nav {
   display: flex;
   align-items: center;
@@ -432,6 +450,8 @@ html {
   padding: 16px 0;
   margin-bottom: 24px;
   border-bottom: 2px solid #e9d5ff;
+  /* Sombra para que, al scrollear, se note que el título (z-index 2) queda delante de las tarjetas */
+  box-shadow: 0 12px 10px -10px rgba(30, 41, 59, 0.35);
 }
 
 /* REQUISITO TP: Grilla con Flexbox */
@@ -464,6 +484,10 @@ html {
   padding: 20px;
   box-shadow: var(--shadow-sm);
   /* REQUISITO TP: opacity en estado visual */
+  /* REQUISITO TP: opacity. Baja el contraste pero la tarjeta SIGUE ocupando
+     su lugar en la grilla y SIGUE recibiendo clics (el corazón y "Ver detalle"
+     funcionan igual). visibility:hidden no recibiría el clic; display:none
+     además sacaría la tarjeta del flujo y desarmaría la grilla. */
   opacity: 0.85;
   transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
 }
@@ -535,9 +559,13 @@ html {
   transform: scale(1.05);
 }
 
-/* REQUISITO TP: position: absolute para badge superpuesto */
+/* REQUISITO TP: position: absolute para badge superpuesto.
+   Va contra .project-card__media (relative): se apoya en la esquina de la foto
+   sin empujar el texto. z-index 1 lo deja delante de la imagen, que al hacer
+   hover escala y crea su propio contexto de apilamiento. */
 .project-card__badge {
   position: absolute;
+  z-index: 1;
   top: 10px;
   right: 10px;
   background-color: rgba(30, 41, 59, 0.85);
@@ -1214,6 +1242,21 @@ html:has(.modal:target) {
     padding: 12px;
   }
 
+  .page-header__close {
+    display: block;
+    margin-top: 4px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    border-radius: var(--radius);
+  }
+
+  .page-header__close:hover {
+    background-color: #f3e8ff;
+  }
+
   /* "Inscribí tu proyecto" sigue visible en celular, más compacto */
   .page-header__button {
     margin-left: auto;
@@ -1261,6 +1304,14 @@ html:has(.modal:target) {
   .project-card__footer {
     justify-content: flex-start;
     gap: 12px;
+  }
+
+  /* En 320px el "Ver detalle" se caía a una segunda fila chiquita.
+     Fila completa: las estrellas, el corazón y el hueco de "Destacado"
+     (visibility: hidden) siguen alineados arriba. */
+  .project-card__footer > .project-card__button {
+    flex: 1 0 100%;
+    text-align: center;
   }
 
   /* Modal con menos relleno para aprovechar el ancho del celular */

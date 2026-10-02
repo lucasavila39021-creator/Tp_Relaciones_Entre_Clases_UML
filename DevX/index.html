@@ -18,14 +18,19 @@
     <!-- Menú hamburguesa sin JS: el checkbox guarda el estado (abierto/cerrado)
          y el label es el botón ☰ que lo tilda. Tienen que ir ANTES del nav
          para poder usar el combinador ~ -->
-    <input type="checkbox" id="menu-toggle" class="page-header__checkbox">
-    <label for="menu-toggle" class="page-header__toggle" aria-label="Abrir menú">☰</label>
+    <input type="checkbox" id="menu-toggle" class="page-header__checkbox" aria-label="Menú">
+    <label for="menu-toggle" class="page-header__toggle">
+      <span class="page-header__toggle-icon page-header__toggle-icon--open" aria-hidden="true">☰</span>
+      <span class="page-header__toggle-icon page-header__toggle-icon--close" aria-hidden="true">✕</span>
+    </label>
 
     <nav class="page-header__nav" aria-label="Navegación principal">
       <!-- MODIFICADOR: el link de la sección actual lleva --active -->
       <a class="page-header__link page-header__link--active" href="#inicio">Inicio</a>
       <a class="page-header__link" href="#info">Info</a>
       <a class="page-header__link" href="#proyectos">Proyectos</a>
+      <!-- Segundo label del mismo checkbox: en celular cierra el menú sin JS -->
+      <label for="menu-toggle" class="page-header__close">Cerrar menú</label>
     </nav>
 
     <!-- Abre el modal #inscripcion con :target -->

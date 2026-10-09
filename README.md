@@ -1,7 +1,7 @@
 # Trabajos Prácticos — Programación III
 
 Repositorio dedicado a los trabajos prácticos de la materia **Programación III**,
-dictada por el profesor **Matías [apellido]**.
+dictada por el profesor **Matías Torres** & **Giuliano Espejo** .
 
 **Tecnicatura Universitaria en Programación — UTN FRM**
 **Comisión 4**

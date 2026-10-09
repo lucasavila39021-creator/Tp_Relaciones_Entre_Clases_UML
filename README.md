@@ -20,3 +20,4 @@ dictada por el profesor **Matías [apellido]**.
 |---|---|---|
 | Relaciones entre clases | Diagramas UML y su implementación en Java | [UML_Relaciones_Entre_Clases](UML_Relaciones_Entre_Clases/) |
 | DevX — Feria de proyectos | Interfaz web con HTML, CSS y metodología BEM | [DevX](DevX/) |
+| TP Librería | API REST con FastAPI + PostgreSQL | [TP_Libreria](TP_Libreria/) |

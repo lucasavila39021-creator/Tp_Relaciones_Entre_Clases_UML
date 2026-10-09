@@ -48,6 +48,7 @@ Avance por ejercicio de la consigna. `[X]` = completado y verificado, `[]` = pen
 
 ## Entrega
 
-- [ ] Script de datos iniciales + `test/` C-01 a C-08 con resultado esperado en comentarios
+- [X] Archivos `test/` C-01 a C-08 registrados, cada uno con su resultado esperado en comentarios
+- [ ] Script de datos iniciales + ejecución de C-01 a C-08 contra los endpoints (requiere Fase 2)
 - [ ] Evidencia C-07 (consultas en consola del detalle de libro y venta)
 - [ ] Verificación final: `alembic upgrade head` sobre base vacía, app que levanta, `README` con pasos desde cero
